@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: e56f776e6d3c41a4dba8aecb68ed6215
+timeCreated: 1517163868
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: CC_Left_Arm
+    100002: CC_Left_Leg
+    100004: CC_Right_Arm
+    100006: CC_Right_Leg
+    100008: IK_Left_Arm
+    100010: IK_Left_Leg
+    100012: IK_Right_Arm
+    100014: IK_Right_Leg
+    100016: JNT_Chest
+    100018: JNT_CollarBone
+    100020: JNT_Head
+    100022: JNT_Left_Ankle
+    100024: JNT_Left_Ball
+    100026: JNT_Left_Elbow
+    100028: JNT_Left_Hand
+    100030: JNT_Left_Hand2
+    100032: JNT_Left_Hand3
+    100034: JNT_Left_Heel
+    100036: JNT_Left_Hip
+    100038: JNT_Left_Knee
+    100040: JNT_Left_Shoulder
+    100042: JNT_Left_Thumb
+    100044: JNT_Left_Thumb2
+    100046: JNT_Left_Toe
+    100048: JNT_Left_Wrist
+    100050: JNT_Neck
+    100052: JNT_Right_Ankle
+    100054: JNT_Right_Ball
+    100056: JNT_Right_Elbow
+    100058: JNT_Right_Hand
+    100060: JNT_Right_Hand2
+    100062: JNT_Right_Hand3
+    100064: JNT_Right_Heel
+    100066: JNT_Right_Hip
+    100068: JNT_Right_Knee
+    100070: JNT_Right_Shoulder
+    100072: JNT_Right_Thumb
+    100074: JNT_Right_Thumb2
+    100076: JNT_Right_Toe
+    100078: JNT_Right_Wrist
+    100080: JNT_ROOT
+    100082: JNT_Torso
+    100084: JNT_Torso1
+    100086: //RootNode
+    400000: CC_Left_Arm
+    400002: CC_Left_Leg
+    400004: CC_Right_Arm
+    400006: CC_Right_Leg
+    400008: IK_Left_Arm
+    400010: IK_Left_Leg
+    400012: IK_Right_Arm
+    400014: IK_Right_Leg
+    400016: JNT_Chest
+    400018: JNT_CollarBone
+    400020: JNT_Head
+    400022: JNT_Left_Ankle
+    400024: JNT_Left_Ball
+    400026: JNT_Left_Elbow
+    400028: JNT_Left_Hand
+    400030: JNT_Left_Hand2
+    400032: JNT_Left_Hand3
+    400034: JNT_Left_Heel
+    400036: JNT_Left_Hip
+    400038: JNT_Left_Knee
+    400040: JNT_Left_Shoulder
+    400042: JNT_Left_Thumb
+    400044: JNT_Left_Thumb2
+    400046: JNT_Left_Toe
+    400048: JNT_Left_Wrist
+    400050: JNT_Neck
+    400052: JNT_Right_Ankle
+    400054: JNT_Right_Ball
+    400056: JNT_Right_Elbow
+    400058: JNT_Right_Hand
+    400060: JNT_Right_Hand2
+    400062: JNT_Right_Hand3
+    400064: JNT_Right_Heel
+    400066: JNT_Right_Hip
+    400068: JNT_Right_Knee
+    400070: JNT_Right_Shoulder
+    400072: JNT_Right_Thumb
+    400074: JNT_Right_Thumb2
+    400076: JNT_Right_Toe
+    400078: JNT_Right_Wrist
+    400080: JNT_ROOT
+    400082: JNT_Torso
+    400084: JNT_Torso1
+    400086: //RootNode
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
