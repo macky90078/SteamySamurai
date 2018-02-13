@@ -33,6 +33,9 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private float moveSpeed = 10.0f; //how fast player traverses the terrain
     private float lookSpeed = 20.0f; //how fast the player will look
 
+    //game related variables
+    public bool containsCube { get; set; }
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
