@@ -5,36 +5,45 @@ using UnityEngine;
 public class BaseEnemyAI : MonoBehaviour {
 
     //Public variables
-        //None
+    //None
 
     //Private Variables
-    [SerializeField] private float slowDistPerc; //Percentage of distance away from target location to toggle slow down.
-    [SerializeField] private float stopDist;
-    [SerializeField] private float slowRotPerc; //Percentage of rotation away from target rotation to toggle slow down.
-    [SerializeField] private float velocityMax;
-    [SerializeField] private float rotationMax;
-    [SerializeField] private float accelLinearInc;
-    [SerializeField] private float accelAngularInc;
-    [SerializeField] private float accelLinearMax;
-    [SerializeField] private float accelAngularMax;
-    [SerializeField] private float maxHealth;
+    [Tooltip("Percent of distance from target to start slowing")]
+        [SerializeField] private float slowDistPerc = 0.16f; //Percentage of distance away from target location to toggle slow down.
+    [Tooltip("Distance to stop from target")]
+        [SerializeField] private float stopDist = 2;
+    [Tooltip("Percent of distance from desired rotation to start slowing")]
+        [SerializeField] private float slowRotPerc = 0.25f; //Percentage of rotation away from target rotation to toggle slow down.
+    [Tooltip("Maximum possible velocity")]
+        [SerializeField] private float velocityMax = 5f;
+    [Tooltip("Maximum possible rotation")]
+        [SerializeField] private float rotationMax = 135f;
+    [Tooltip("Increase in linear acceleration per frame")]
+        [SerializeField] private float accelLinearInc = 0.1f;
+    [Tooltip("Increase in angular acceleration per frame")]
+        [SerializeField] private float accelAngularInc = 1f;
+    [Tooltip("Maximum possible linear acceleration")]
+        [SerializeField] private float accelLinearMax = 2f;
+    [Tooltip("Maximum possible angular acceleration")]
+        [SerializeField] private float accelAngularMax = 180f;
+    [Tooltip("Maximum health for enemy")]
+        [SerializeField] private float maxHealth = 100f;
     private float slowDist;
     private float accelLinear;
     private float accelAngular;
     private float velocity = 0.0F; //Linear velocity.
     private float rotation = 0.0F; //Angular velocity.
     private float slowRot;
-    private float rotLeft; //Rotation remaining to destination rotation.
+    private float rotRemaining; //Rotation remaining to destination rotation.
     private float distTo;
     private float health;
     private bool hasTarget = false;
     private bool inDefense = false;
     private bool attacking = false;
-    private GameObject targetPlayer;
-    private GameObject[] players;
     private Vector3 playerPos;
     private Vector3 targetPos;
     private Quaternion destRot;
+    private GameObject targetObj;
 
     // Use this for initialization
     void Start()
@@ -47,12 +56,12 @@ public class BaseEnemyAI : MonoBehaviour {
     void Update()
     {
         CheckHealth();
-        FindTargetPlayer();
         Move();
     }
 
     void InitVars()
     {
+        targetObj = GameObject.FindGameObjectWithTag("dataCube");
         health = maxHealth;
         accelLinear = 0.0F;
         accelAngular = 0.0F;
@@ -62,13 +71,13 @@ public class BaseEnemyAI : MonoBehaviour {
     //Movement towards target player with smoothing
     void Move()
     {
+        SetGoalPos();
         if (hasTarget)
         {
-            SetGoalPos();
             LinearMove();
             AngularMove();
-            Stopping();
         }
+        Stopping();
     }
 
     // Stop if distance to target is within set stopping range.
@@ -79,6 +88,8 @@ public class BaseEnemyAI : MonoBehaviour {
             hasTarget = false;
             velocity = 0.0F;
         }
+        else
+            hasTarget = true;
     }
 
     // Physically rotate the character towards desired location
@@ -112,53 +123,31 @@ public class BaseEnemyAI : MonoBehaviour {
     //Initializes movement
     void StartMoving()
     {
-        FindTargetPlayer();
         SetGoalPos();
-        slowRot = rotLeft * slowRotPerc;
-    }
-
-    //Finds player with current cube if not in defense mode
-    //Used testing script for data cube, in order to not mess with other scripts
-    void FindTargetPlayer()
-    {
-        if (!inDefense)
-        {
-            players = GameObject.FindGameObjectsWithTag("Player");
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].GetComponent<playerCube>().hasCube == true)
-                {
-                    targetPlayer = players[i];
-                    playerPos = targetPlayer.transform.position;
-                }
-            }
-        }
-
-        if (targetPlayer != null)
-            hasTarget = true;
-        else
-            hasTarget = false;
-
+        hasTarget = true;
+        slowRot = rotRemaining * slowRotPerc;
     }
 
     /* Function for assigning the desired location for character to move to
     Pre-condition: Must have playerPos assigned. Call FindTargetPlayer. */
     void SetGoalPos()
     {
-        targetPos = playerPos - transform.position;
+        targetPos = targetObj.transform.position - transform.position;
         distTo = targetPos.magnitude;
         slowDist = distTo * slowDistPerc;
         destRot = Quaternion.LookRotation(targetPos);
-        rotLeft = Quaternion.Angle(transform.rotation, destRot);
+        rotRemaining = Quaternion.Angle(transform.rotation, destRot);
     }
 
+    //Slows velocity gradually if within slow distance
     float GetMoveSpeed()
     {
         return (distTo >= slowDist ? velocity : Mathf.Lerp(0.0F, velocity, distTo / slowDist));
     }
 
+    //Slows rotation slowly if closer to desired rotation
     float GetRotSpeed()
     {
-        return (rotLeft >= slowRot ? rotation : Mathf.Lerp(0.0F, rotation, rotLeft / slowRot));
+        return (rotRemaining >= slowRot ? rotation : Mathf.Lerp(0.0F, rotation, rotRemaining / slowRot));
     }
 }
