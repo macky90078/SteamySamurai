@@ -28,6 +28,10 @@ public class BaseEnemyAI : MonoBehaviour {
         [SerializeField] private float accelAngularMax = 180f;
     [Tooltip("Maximum health for enemy")]
         [SerializeField] private float maxHealth = 100f;
+    [Tooltip("First player prefab")]
+        [SerializeField] private GameObject playerOnePrefab;
+    [Tooltip("First player prefab")]
+        [SerializeField] private GameObject playerTwoPrefab;
     private float slowDist;
     private float accelLinear;
     private float accelAngular;
@@ -46,12 +50,13 @@ public class BaseEnemyAI : MonoBehaviour {
     private Vector3 targetPos;
     private Quaternion destRot;
     private GameObject targetObj;
+    private enum states { seek, defense, idle };
+    private states currState;
 
     // Use this for initialization
     void Start()
     {
         InitVars();
-        StartMoving();
     }
 
     // Update is called once per frame
@@ -64,7 +69,8 @@ public class BaseEnemyAI : MonoBehaviour {
     // Intialization of various variables.
     void InitVars()
     {
-        targetObj = GameObject.FindGameObjectWithTag("dataCube");
+        currState = states.seek;
+        changeState(currState);
         health = maxHealth;
         accelLinear = 0.0F;
         accelAngular = 0.0F;
@@ -77,6 +83,31 @@ public class BaseEnemyAI : MonoBehaviour {
         SetGoalPos();
         hasTarget = true;
         slowRot = rotRemaining * slowRotPerc;
+    }
+
+    void changeState(states newState)
+    {
+        switch(newState)
+        {
+            case states.seek:
+                targetObj = GameObject.FindGameObjectWithTag("dataCube");
+                StartMoving();
+                break;
+            case states.defense:
+                targetObj = getHighPlayer();
+                StartMoving();
+                break;
+            case states.idle:
+                hasTarget = false;
+                velocity = 0.0f;
+                break;
+        }
+    }
+
+    //Checks which player did the most damage
+    GameObject getHighPlayer()
+    {
+        return (p1Dmg >= p2Dmg ? playerOnePrefab : playerTwoPrefab);
     }
 
     // Function for assigning the desired location for character to move to
@@ -147,10 +178,8 @@ public class BaseEnemyAI : MonoBehaviour {
     {
         if (health <= maxHealth / 2)
         {
-            inDefense = true;
+            changeState(states.defense);
         }
-        else
-            inDefense = false;
     }
 
     // Call this function from other scripts to deal damage to this enemy from
