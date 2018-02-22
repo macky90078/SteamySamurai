@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BaseEnemyAI : MonoBehaviour {
 
-    //Public variables
-    //none
+    // Public variables
+    // none
 
-    //Private Variables
+    // Private Variables
     [Tooltip("Percent of distance from target to start slowing")]
-        [SerializeField] private float slowDistPerc = 0.16f; //Percentage of distance away from target location to toggle slow down.
+        [SerializeField] private float slowDistPerc = 0.16f; // Percentage of distance away from target location to toggle slow down.
     [Tooltip("Distance to stop from target")]
         [SerializeField] private float stopDist = 2;
     [Tooltip("Percent of distance from desired rotation to start slowing")]
-        [SerializeField] private float slowRotPerc = 0.25f; //Percentage of rotation away from target rotation to toggle slow down.
+        [SerializeField] private float slowRotPerc = 0.25f; // Percentage of rotation away from target rotation to toggle slow down.
     [Tooltip("Maximum possible velocity")]
         [SerializeField] private float velocityMax = 5f;
     [Tooltip("Maximum possible rotation")]
@@ -61,6 +61,7 @@ public class BaseEnemyAI : MonoBehaviour {
         Move();
     }
 
+    // Intialization of various variables.
     void InitVars()
     {
         targetObj = GameObject.FindGameObjectWithTag("dataCube");
@@ -70,7 +71,25 @@ public class BaseEnemyAI : MonoBehaviour {
         rotation = 0.0F;
     }
 
-    //Movement towards target player with smoothing
+    // Initializes movement
+    void StartMoving()
+    {
+        SetGoalPos();
+        hasTarget = true;
+        slowRot = rotRemaining * slowRotPerc;
+    }
+
+    // Function for assigning the desired location for character to move to
+    void SetGoalPos()
+    {
+        targetPos = targetObj.transform.position - transform.position;
+        distTo = targetPos.magnitude;
+        slowDist = distTo * slowDistPerc;
+        destRot = Quaternion.LookRotation(targetPos);
+        rotRemaining = Quaternion.Angle(transform.rotation, destRot);
+    }
+
+    // Movement towards target player with smoothing
     void Move()
     {
         SetGoalPos();
@@ -111,7 +130,19 @@ public class BaseEnemyAI : MonoBehaviour {
         accelLinear = Mathf.Clamp(accelLinear + accelLinearInc, 0.0F, accelLinearMax);
     }
 
-    //Switches to defense mode if health is less than OR equal to half of max health
+    // Slows velocity gradually if within slow distance
+    float GetMoveSpeed()
+    {
+        return (distTo >= slowDist ? velocity : Mathf.Lerp(0.0F, velocity, distTo / slowDist));
+    }
+
+    // Slows rotation slowly if closer to desired rotation
+    float GetRotSpeed()
+    {
+        return (rotRemaining >= slowRot ? rotation : Mathf.Lerp(0.0F, rotation, rotRemaining / slowRot));
+    }
+
+    // Switches to defense mode if health is less than OR equal to half of max health
     void CheckHealth()
     {
         if (health <= maxHealth / 2)
@@ -122,37 +153,18 @@ public class BaseEnemyAI : MonoBehaviour {
             inDefense = false;
     }
 
-    //Initializes movement
-    void StartMoving()
-    {
-        SetGoalPos();
-        hasTarget = true;
-        slowRot = rotRemaining * slowRotPerc;
-    }
-
-    /* Function for assigning the desired location for character to move to
-    Pre-condition: Must have playerPos assigned. Call FindTargetPlayer. */
-    void SetGoalPos()
-    {
-        targetPos = targetObj.transform.position - transform.position;
-        distTo = targetPos.magnitude;
-        slowDist = distTo * slowDistPerc;
-        destRot = Quaternion.LookRotation(targetPos);
-        rotRemaining = Quaternion.Angle(transform.rotation, destRot);
-    }
-
-    //Call this function from other scripts to deal damage to this enemy from
-    //A non-player source
-    void dealDamage(float damage)
+    // Call this function from other scripts to deal damage to this enemy from
+    // A non-player source
+    public void DealDamage(float damage)
     {
         health -= damage;
         if (health < 0)
             health = 0;
     }
 
-    //Call this function from other scripts to deal damage to this enemy from a player
-    //First parameter is the number of the player. Second is the damage to deal.
-    void dealDamage(float damage, int playerNum)
+    // Call this function from other scripts to deal damage to this enemy from 
+    // A player source
+    public void DealDamage(float damage, int playerNum)
     {
         health -= damage;
         if (health < 0)
@@ -161,22 +173,12 @@ public class BaseEnemyAI : MonoBehaviour {
         {
             case 1:
                 p1Dmg += damage;
+                Debug.Log("Player One: " + p1Dmg);
                 break;
             case 2:
                 p2Dmg += damage;
+                Debug.Log("Player Two: " + p2Dmg);
                 break;
         }
-    }
-
-    //Slows velocity gradually if within slow distance
-    float GetMoveSpeed()
-    {
-        return (distTo >= slowDist ? velocity : Mathf.Lerp(0.0F, velocity, distTo / slowDist));
-    }
-
-    //Slows rotation slowly if closer to desired rotation
-    float GetRotSpeed()
-    {
-        return (rotRemaining >= slowRot ? rotation : Mathf.Lerp(0.0F, rotation, rotRemaining / slowRot));
     }
 }
