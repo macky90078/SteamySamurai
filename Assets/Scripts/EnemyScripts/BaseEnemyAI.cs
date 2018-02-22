@@ -30,7 +30,7 @@ public class BaseEnemyAI : MonoBehaviour {
         [SerializeField] private float maxHealth = 100f;
     [Tooltip("First player prefab")]
         [SerializeField] private GameObject playerOnePrefab;
-    [Tooltip("First player prefab")]
+    [Tooltip("Second player prefab")]
         [SerializeField] private GameObject playerTwoPrefab;
     private float slowDist;
     private float accelLinear;
@@ -41,8 +41,8 @@ public class BaseEnemyAI : MonoBehaviour {
     private float rotRemaining; //Rotation remaining to destination rotation.
     private float distTo;
     private float health;
-    private float p1Dmg;
-    private float p2Dmg;
+    private float p1Dmg; // Amount of damage done from each player
+    private float p2Dmg; // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     private bool hasTarget = false;
     private bool inDefense = false;
     private bool attacking = false;
