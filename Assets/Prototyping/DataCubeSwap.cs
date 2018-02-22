@@ -27,6 +27,7 @@ public class DataCubeSwap : MonoBehaviour {
                 hasCube = true;
             }
         }
+        if()
 
 		if(hasCube == true)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseEnemyAI : MonoBehaviour {
 
     //Public variables
-    //None
+    //none
 
     //Private Variables
     [Tooltip("Percent of distance from target to start slowing")]
@@ -37,6 +37,8 @@ public class BaseEnemyAI : MonoBehaviour {
     private float rotRemaining; //Rotation remaining to destination rotation.
     private float distTo;
     private float health;
+    private float p1Dmg;
+    private float p2Dmg;
     private bool hasTarget = false;
     private bool inDefense = false;
     private bool attacking = false;
@@ -137,6 +139,33 @@ public class BaseEnemyAI : MonoBehaviour {
         slowDist = distTo * slowDistPerc;
         destRot = Quaternion.LookRotation(targetPos);
         rotRemaining = Quaternion.Angle(transform.rotation, destRot);
+    }
+
+    //Call this function from other scripts to deal damage to this enemy from
+    //A non-player source
+    void dealDamage(float damage)
+    {
+        health -= damage;
+        if (health < 0)
+            health = 0;
+    }
+
+    //Call this function from other scripts to deal damage to this enemy from a player
+    //First parameter is the number of the player. Second is the damage to deal.
+    void dealDamage(float damage, int playerNum)
+    {
+        health -= damage;
+        if (health < 0)
+            health = 0;
+        switch(playerNum)
+        {
+            case 1:
+                p1Dmg += damage;
+                break;
+            case 2:
+                p2Dmg += damage;
+                break;
+        }
     }
 
     //Slows velocity gradually if within slow distance
