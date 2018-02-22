@@ -446,6 +446,10 @@ Prefab:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 1470177093157268, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
   m_IsPrefabParent: 0
@@ -529,7 +533,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4327753775631228, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.03
+      value: 17.14
       objectReference: {fileID: 0}
     - target: {fileID: 4327753775631228, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
       propertyPath: m_LocalPosition.y
@@ -537,7 +541,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4327753775631228, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 29.67
+      value: 25.25
       objectReference: {fileID: 0}
     - target: {fileID: 4327753775631228, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
       propertyPath: m_LocalRotation.x
@@ -576,6 +580,10 @@ Prefab:
         type: 2}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1470177093157268, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e74b504ff026fc42b2b995f3786e858, type: 2}
@@ -633,6 +641,10 @@ Prefab:
         type: 2}
       propertyPath: stopDist
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445753841989200, guid: 7b3b3ca853948eb45b31704f0e8b9584, type: 2}
+      propertyPath: m_TagString
+      value: enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b3b3ca853948eb45b31704f0e8b9584, type: 2}

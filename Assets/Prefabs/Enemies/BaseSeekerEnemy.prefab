@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114248602123695410}
   m_Layer: 0
   m_Name: BaseSeekerEnemy
-  m_TagString: dataCube
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1359e0605824c40949f6b97d500cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObj: {fileID: 1554100314593342, guid: 11aa1850d9205fd409d3495184c9da00, type: 2}
   slowDistPerc: 0.16
   stopDist: 2
   slowRotPerc: 0.25

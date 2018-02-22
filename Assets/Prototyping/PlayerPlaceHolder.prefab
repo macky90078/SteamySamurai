@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114007665296280750}
   m_Layer: 0
   m_Name: PlayerPlaceHolder
-  m_TagString: dataCube
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc2da04afbbe0e4783222b008cbbebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dataCube: {fileID: 1554100314593342, guid: 11aa1850d9205fd409d3495184c9da00, type: 2}
   cubeHolder: {fileID: 1337468280341068}
   hasCube: 0
 --- !u!135 &135253132014336446
