@@ -32,6 +32,8 @@ public class BaseEnemyAI : MonoBehaviour {
         [SerializeField] private GameObject playerOnePrefab;
     [Tooltip("Second player prefab")]
         [SerializeField] private GameObject playerTwoPrefab;
+    [Tooltip("State the enemy will start in. Should probably be 'seek'.")]
+        [SerializeField] private states initialState;
     private float slowDist;
     private float accelLinear;
     private float accelAngular;
@@ -69,8 +71,7 @@ public class BaseEnemyAI : MonoBehaviour {
     // Intialization of various variables.
     void InitVars()
     {
-        currState = states.seek;
-        changeState(currState);
+        changeState(initialState);
         health = maxHealth;
         accelLinear = 0.0F;
         accelAngular = 0.0F;
@@ -102,6 +103,7 @@ public class BaseEnemyAI : MonoBehaviour {
                 velocity = 0.0f;
                 break;
         }
+        currState = newState;
     }
 
     //Checks which player did the most damage
