@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -110,6 +110,11 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &78164902 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1488251529472934, guid: d4739a0b62444054a842a86c79004e73,
+    type: 2}
+  m_PrefabInternal: {fileID: 1948819548}
 --- !u!1001 &127823323
 Prefab:
   m_ObjectHideFlags: 0
@@ -149,6 +154,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114054189199040308, guid: ce9ddc5f518634c418d5febfe60810a3,
+        type: 2}
+      propertyPath: stopDist
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114054189199040308, guid: ce9ddc5f518634c418d5febfe60810a3,
+        type: 2}
+      propertyPath: m_gPlayer1
+      value: 
+      objectReference: {fileID: 1678022204}
+    - target: {fileID: 114054189199040308, guid: ce9ddc5f518634c418d5febfe60810a3,
+        type: 2}
+      propertyPath: m_gPlayer2
+      value: 
+      objectReference: {fileID: 78164902}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce9ddc5f518634c418d5febfe60810a3, type: 2}
   m_IsPrefabParent: 0
@@ -475,6 +495,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1678022204 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1470177093157268, guid: 9e74b504ff026fc42b2b995f3786e858,
+    type: 2}
+  m_PrefabInternal: {fileID: 528718249}
 --- !u!1001 &1948819548
 Prefab:
   m_ObjectHideFlags: 0

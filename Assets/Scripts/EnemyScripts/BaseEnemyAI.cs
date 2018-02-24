@@ -28,10 +28,6 @@ public class BaseEnemyAI : MonoBehaviour {
         [SerializeField] private float accelAngularMax = 180f;
     [Tooltip("Maximum health for enemy")]
         [SerializeField] private float maxHealth = 100f;
-    [Tooltip("First player prefab")]
-        [SerializeField] private GameObject playerOnePrefab;
-    [Tooltip("Second player prefab")]
-        [SerializeField] private GameObject playerTwoPrefab;
     [Tooltip("State the enemy will start in. Should probably be 'seek'.")]
         [SerializeField] private states initialState;
     private float slowDist;
@@ -54,6 +50,11 @@ public class BaseEnemyAI : MonoBehaviour {
     private GameObject targetObj;
     private enum states { seek, defense, idle };
     private states currState;
+
+    [SerializeField]
+    private GameObject m_gPlayer1;
+    [SerializeField]
+    private GameObject m_gPlayer2;
 
     // Use this for initialization
     void Start()
@@ -109,7 +110,7 @@ public class BaseEnemyAI : MonoBehaviour {
     //Checks which player did the most damage
     GameObject getHighPlayer()
     {
-        return (p1Dmg >= p2Dmg ? playerOnePrefab : playerTwoPrefab);
+        return (p1Dmg >= p2Dmg ? m_gPlayer1 : m_gPlayer2);
     }
 
     // Function for assigning the desired location for character to move to
