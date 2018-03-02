@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65126832103976072}
   - component: {fileID: 23369604122307252}
   - component: {fileID: 54662516315852650}
-  - component: {fileID: 114054189199040308}
+  - component: {fileID: 114781724259671412}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: enemy
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1313174074292082}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.46, y: 2.45, z: 33.69}
+  m_LocalPosition: {x: 22.89234, y: 1, z: 27.637682}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 4027838343027360}
@@ -181,7 +181,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114054189199040308
+--- !u!114 &114781724259671412
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -189,11 +189,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313174074292082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1359e0605824c40949f6b97d500cbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f5a0f9230813f44fbcc35b5111191bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slowDistPerc: 0.16
-  stopDist: 5
+  stopDist: 3
   slowRotPerc: 0.25
   velocityMax: 5
   rotationMax: 135
@@ -202,11 +202,14 @@ MonoBehaviour:
   accelLinearMax: 2
   accelAngularMax: 180
   maxHealth: 100
-  playerOnePrefab: {fileID: 1470177093157268, guid: 9e74b504ff026fc42b2b995f3786e858,
-    type: 2}
-  playerTwoPrefab: {fileID: 1488251529472934, guid: d4739a0b62444054a842a86c79004e73,
-    type: 2}
   initialState: 0
+  m_gPlayer1: {fileID: 0}
+  m_gPlayer2: {fileID: 0}
+  scrapMetalPrefab: {fileID: 0}
+  chargeDist: 15
+  chargeAccelMax: 6
+  chargeAccelInc: 2
+  maxChargeVelocity: 50
 --- !u!135 &135415678097427880
 SphereCollider:
   m_ObjectHideFlags: 1

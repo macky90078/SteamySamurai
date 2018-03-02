@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseEnemyAI : MonoBehaviour {
+public class NinjaEnemy : MonoBehaviour {
 
     // Public variables
     // none
@@ -43,18 +43,33 @@ public class BaseEnemyAI : MonoBehaviour {
     private float p2Dmg; // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     private bool hasTarget = false;
     private bool inDefense = false;
-    private bool attacking = false;
     private Vector3 playerPos;
     private Vector3 targetPos;
     private Quaternion destRot;
     private GameObject targetObj;
-    private enum states { seek, defense, idle };
+    private enum states { seek, defense, charge, idle };
     private states currState;
 
-    [SerializeField]
-    private GameObject m_gPlayer1;
-    [SerializeField]
-    private GameObject m_gPlayer2;
+    [SerializeField] private GameObject m_gPlayer1;
+    [SerializeField] private GameObject m_gPlayer2;
+    [SerializeField] private GameObject scrapMetalPrefab;
+
+
+
+    private bool charging = false;
+    [Tooltip("Range that character should start charging")]
+        [SerializeField] private float chargeDist = 15f;
+    [Tooltip("Maximum possible linear acceleration while charging")]
+        [SerializeField] private float chargeAccelMax = 5f;
+    [Tooltip("Increase in linear acceleration per frame while charging")]
+        [SerializeField] private float chargeAccelInc = 0.5f;
+    [Tooltip("Maximum velocity possible while charging")]
+        [SerializeField] private float maxChargeVelocity = 25;
+
+    private float currAccelMax;
+    private float currAccelInc;
+    private float currVelocityMax;
+
 
     // Use this for initialization
     void Start()
@@ -66,13 +81,14 @@ public class BaseEnemyAI : MonoBehaviour {
     void Update()
     {
         CheckHealth();
+        CheckChargeDist();
         Move();
     }
 
     // Intialization of various variables.
     void InitVars()
     {
-        changeState(initialState);
+        ChangeState(initialState);
         health = maxHealth;
         accelLinear = 0.0F;
         accelAngular = 0.0F;
@@ -87,16 +103,16 @@ public class BaseEnemyAI : MonoBehaviour {
         slowRot = rotRemaining * slowRotPerc;
     }
 
-    void changeState(states newState)
+    void ChangeState(states newState)
     {
-        switch(newState)
+        switch (newState)
         {
             case states.seek:
                 targetObj = GameObject.FindGameObjectWithTag("dataCube");
                 StartMoving();
                 break;
             case states.defense:
-                targetObj = getHighPlayer();
+                targetObj = GetHighPlayer();
                 StartMoving();
                 break;
             case states.idle:
@@ -108,7 +124,7 @@ public class BaseEnemyAI : MonoBehaviour {
     }
 
     //Checks which player did the most damage
-    GameObject getHighPlayer()
+    GameObject GetHighPlayer()
     {
         return (p1Dmg >= p2Dmg ? m_gPlayer1 : m_gPlayer2);
     }
@@ -135,6 +151,29 @@ public class BaseEnemyAI : MonoBehaviour {
         Stopping();
     }
 
+    // Check if within charge distance and start charging if so
+    // Adjusts velocity variables if charging or not
+    void CheckChargeDist()
+    {
+        if (distTo <= chargeDist)
+            charging = true;
+        else
+            charging = false;
+
+        if (charging)
+        {
+            currVelocityMax = maxChargeVelocity;
+            currAccelInc = chargeAccelInc;
+            currAccelMax = chargeAccelMax;
+        }
+        else
+        {
+            currVelocityMax = velocityMax;
+            currAccelInc = accelLinearInc;
+            currAccelMax = accelLinearMax;
+        }
+    }
+
     // Stop if distance to target is within set stopping range.
     void Stopping()
     {
@@ -142,6 +181,7 @@ public class BaseEnemyAI : MonoBehaviour {
         {
             hasTarget = false;
             velocity = 0.0F;
+            die();
         }
         else
             hasTarget = true;
@@ -160,8 +200,8 @@ public class BaseEnemyAI : MonoBehaviour {
     void LinearMove()
     {
         transform.Translate(Vector3.forward * GetMoveSpeed() * Time.deltaTime);
-        velocity = Mathf.Clamp(velocity + accelLinear, 0.0F, velocityMax);
-        accelLinear = Mathf.Clamp(accelLinear + accelLinearInc, 0.0F, accelLinearMax);
+        velocity = Mathf.Clamp(velocity + accelLinear, 0.0F, currVelocityMax);
+        accelLinear = Mathf.Clamp(accelLinear + currAccelInc, 0.0F, currAccelMax);
     }
 
     // Slows velocity gradually if within slow distance
@@ -181,7 +221,7 @@ public class BaseEnemyAI : MonoBehaviour {
     {
         if (health <= maxHealth / 2)
         {
-            changeState(states.defense);
+            ChangeState(states.defense);
         }
     }
 
@@ -201,7 +241,7 @@ public class BaseEnemyAI : MonoBehaviour {
         health -= damage;
         if (health < 0)
             health = 0;
-        switch(playerNum)
+        switch (playerNum)
         {
             case 1:
                 p1Dmg += damage;
@@ -210,5 +250,11 @@ public class BaseEnemyAI : MonoBehaviour {
                 p2Dmg += damage;
                 break;
         }
+    }
+
+    void die()
+    {
+        Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
