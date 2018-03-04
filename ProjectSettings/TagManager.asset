@@ -11,6 +11,7 @@ TagManager:
   - BounceSurface
   - enemy
   - moonMirror
+  - dataCube
   layers:
   - Default
   - TransparentFX
