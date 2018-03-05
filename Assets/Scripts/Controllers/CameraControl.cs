@@ -20,12 +20,11 @@ public class CameraControl : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         Move();
         Zoom();
     }
-
 
     private void Move()
     {

@@ -33,6 +33,10 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private float moveSpeed = 10.0f; //how fast player traverses the terrain
     private float lookSpeed = 20.0f; //how fast the player will look
 
+    private float m_LookAngleInDegrees;
+
+    public float m_damping = 10.0f;
+
     //game related variables
     public bool containsCube { get; set; }
 
@@ -44,18 +48,25 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     void GetInput()
 	{
 		moveVector.x = player.GetAxis("MoveHorizontal"); //the left stick on a controller, or WASD
-		moveVector.z = player.GetAxis("MoveVertical"); //'a' button on a controller, or the return key
+		moveVector.z = player.GetAxis("MoveVertical"); 
 
 	    lookVector.x = player.GetAxis("LookHorizontal");
 	    lookVector.y = player.GetAxis("LookVertical");
 
-		select = player.GetButtonDown("Select");
+		select = player.GetButtonDown("Select"); //'a' button on a controller, or the return key
 
-	}
+    }
 
 	void ProcessInput()
 	{
 		transform.Translate(moveVector * Time.deltaTime * moveSpeed); //moving the player
+
+        if(lookVector.x != 0.0f || lookVector.y != 0.0f)
+        {
+            m_LookAngleInDegrees = Mathf.Atan2(lookVector.x, lookVector.y) * Mathf.Rad2Deg;
+            Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
+        }
 	}
 	
 	// Update is called once per frame
