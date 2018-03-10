@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class OldGameManager : MonoBehaviour {
+    
+    // THIS IS THE OLD GAME MANAGER FROM THE GAME JAM
+    // I PUT IT IN THIS FILE TO PRESERVE THE CODE
+    // -- DAVID LAFANTAISIE
 
     public Vector3 m_deadEnemyLastPos;
     public Quaternion m_deadEnemyLastRot;
@@ -14,15 +17,6 @@ public class GameManager : MonoBehaviour {
     private GameObject m_shattedEnemyObj;
     [SerializeField]
     private Material m_mattFrozen;
-
-
-    public static string NextScene;
-
-    // Prevent manager from being destroyed between scenes
-    void Awake()
-    {
-        DontDestroyOnLoad(transform.gameObject);
-    }
 
     // Use this for initialization
     void Start()
@@ -49,12 +43,4 @@ public class GameManager : MonoBehaviour {
             m_enemyDied = false;
         }
     }
-
-    public void StartLoadingScreen()
-    {
-        SceneManager.LoadScene("loadingScreen");
-    }
-
-    public string GetNextScene() { return NextScene; }
-    public void SetNextScene(string nextSceneName) { NextScene = nextSceneName; }
 }
