@@ -37,7 +37,7 @@ public class DataCubeSwapper : MonoBehaviour
     void Start()
     {
 
-        playerPrefabs[0] = GameObject.Find("SimplePlayer"); //perhaps dangerous. But we'll deal with this
+        playerPrefabs[0] = GameObject.FindGameObjectWithTag("Player"); //perhaps dangerous. But we'll deal with this
         dataCubeInstance = Instantiate(dataCube, playerPrefabs[0].transform.Find("AttachPoint").transform.position, Quaternion.identity);
         dataCubeInstance.transform.parent = playerPrefabs[0].transform;
         playerPrefabs[0].GetComponent<PlayerController>().containsCube = true; // default value

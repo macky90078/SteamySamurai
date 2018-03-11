@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: d73e8bfa72086cf4e81ba1d5c6e27052
+timeCreated: 1517158647
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: BaseBody_low
+    100002: //RootNode
+    100004: Finger1
+    100006: Finger2
+    100008: Finger3
+    100010: Head
+    100012: Hips
+    100014: LeftArm
+    100016: LeftFoot
+    100018: LeftForeArm
+    100020: LeftHand
+    100022: LeftLeg
+    100024: LeftToeBase
+    100026: LeftUpLeg
+    100028: RightArm
+    100030: RightFoot
+    100032: RightForeArm
+    100034: RightHand
+    100036: RightLeg
+    100038: RightToeBase
+    100040: RightUpLeg
+    100042: Spike_low
+    100044: Spine1
+    100046: Spine2
+    100048: Thumb
+    100050: Thumb2
+    100052: tmButton1
+    100054: tmButton2
+    100056: tmButton3
+    100058: tmButton4
+    100060: tmButton5
+    100062: tmButton6
+    100064: tmButton7
+    100066: tmButtonRGB1
+    100068: tmButtonRGB2
+    100070: tmButtonRGB3
+    100072: tmButtonRGB4
+    100074: tmButtonRGB5
+    100076: tmButtonRGB6
+    100078: tmButtonRGB7
+    100080: tmButtons1
+    100082: tmButtonValue1
+    100084: tmButtonValue2
+    100086: tmButtonValue3
+    100088: tmButtonValue4
+    100090: tmButtonValue5
+    100092: tmButtonValue6
+    100094: tmButtonValue7
+    100096: tmButtonVis1
+    100098: tmGroups1
+    100100: tmOptions1
+    100102: tmSliderVis1
+    100104: tmXML1
+    400000: BaseBody_low
+    400002: //RootNode
+    400004: Finger1
+    400006: Finger2
+    400008: Finger3
+    400010: Head
+    400012: Hips
+    400014: LeftArm
+    400016: LeftFoot
+    400018: LeftForeArm
+    400020: LeftHand
+    400022: LeftLeg
+    400024: LeftToeBase
+    400026: LeftUpLeg
+    400028: RightArm
+    400030: RightFoot
+    400032: RightForeArm
+    400034: RightHand
+    400036: RightLeg
+    400038: RightToeBase
+    400040: RightUpLeg
+    400042: Spike_low
+    400044: Spine1
+    400046: Spine2
+    400048: Thumb
+    400050: Thumb2
+    400052: tmButton1
+    400054: tmButton2
+    400056: tmButton3
+    400058: tmButton4
+    400060: tmButton5
+    400062: tmButton6
+    400064: tmButton7
+    400066: tmButtonRGB1
+    400068: tmButtonRGB2
+    400070: tmButtonRGB3
+    400072: tmButtonRGB4
+    400074: tmButtonRGB5
+    400076: tmButtonRGB6
+    400078: tmButtonRGB7
+    400080: tmButtons1
+    400082: tmButtonValue1
+    400084: tmButtonValue2
+    400086: tmButtonValue3
+    400088: tmButtonValue4
+    400090: tmButtonValue5
+    400092: tmButtonValue6
+    400094: tmButtonValue7
+    400096: tmButtonVis1
+    400098: tmGroups1
+    400100: tmOptions1
+    400102: tmSliderVis1
+    400104: tmXML1
+    4300000: BaseBody_low
+    4300002: Spike_low
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: BaseBody_low
+    13700002: Spike_low
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

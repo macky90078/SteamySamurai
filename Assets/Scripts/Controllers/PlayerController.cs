@@ -30,7 +30,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private float maxTilt = 45f;
     private float minTilt = 45f; //to stop player from looking up in circles
 
-    private float moveSpeed = 10.0f; //how fast player traverses the terrain
+    [SerializeField] private float moveSpeed = 10.0f; //how fast player traverses the terrain
     private float lookSpeed = 20.0f; //how fast the player will look
 
     private float m_LookAngleInDegrees;
