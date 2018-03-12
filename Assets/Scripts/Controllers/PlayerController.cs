@@ -19,7 +19,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 	public int playerId = 0; //the player controller ID. I've set up two controllers, one for each player. 0 is player one, 1 is player two
 	private Player player; //getting the instance of the player as held by the input manager
 
-	//movement related variables
+    //movement related variables
 	private Vector3 moveVector;
     private Vector2 lookVector;
 
@@ -42,13 +42,23 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     public bool containsCube { get; set; }
 
     // Combat variables
+    private Vector3 forward;
+    private GameObject target;
+    private int enemyMask;
+
+        // Ranged
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject projectileSpawn;
     [SerializeField] private float fireRate = 0.3f;
     [SerializeField] private float rangedDamage = 1.0f;
-    private float shootTimer;
-
-
+    private float shootTimer = 0.0f;
+        // Melee
+    [SerializeField] private float meleeAttackRate = 0.5f;
+    [SerializeField] private float meleeRange = 3.0f;
+    [SerializeField] private float meleeDamage = 1.0f;
+    private float meleeTimer = 0.0f;
+    private Vector3 center;
+    private float centerHeight = 0.7f;
 
     void Awake()
     {
@@ -58,6 +68,8 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private void Start()
     {
         shootTimer = fireRate;
+        enemyMask = GameManager.enemyMask;
+        centerHeight = GetComponent<BoxCollider>().center.y;
     }
 
     void GetInput()
@@ -83,7 +95,11 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
 
-        //Combat
+
+        // Combat
+        forward = transform.TransformDirection(Vector3.forward);
+        center = new Vector3(transform.position.x, transform.position.y + centerHeight, transform.position.z);
+        // Ranged or melee depending on ID
         if (attacking && playerId == 0)
             shoot();
         else if (attacking && playerId == 1)
@@ -109,8 +125,23 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         }
     }
 
+    // Attack directly in front
     void melee()
     {
+        meleeTimer -= Time.deltaTime;
+        if(meleeTimer <= 0)
+        {
+            meleeTimer = meleeAttackRate;
 
+            //Raycast to see if hit anything
+            RaycastHit hit;
+            if (Physics.Raycast(center, forward, out hit, meleeRange, enemyMask))
+            {
+                target = hit.transform.gameObject;
+                // Finds the script attached to the enemy, this is a design issue, made a note of it
+                target.BroadcastMessage("DealDamage", meleeDamage);
+            }
+            Debug.DrawRay(center, forward*meleeRange, Color.red);
+        }
     }
 }

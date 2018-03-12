@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour
     Path path;
 
     [SerializeField] GameObject m_childRefObj;
-    [SerializeField] GameManager m_gameManagerObj;
+    [SerializeField] OldGameManager m_gameManagerObj;
 
   public bool m_isFrozen = false;
   public bool m_isNorm = true;
@@ -65,10 +65,10 @@ public class Unit : MonoBehaviour
 
         if (m_isDead)
         {
-            m_gameManagerObj.GetComponent<GameManager>().m_deadEnemyLastPos = m_currentPos;
-            m_gameManagerObj.GetComponent<GameManager>().m_deadEnemyLastRot = m_currentRot;
+            m_gameManagerObj.GetComponent<OldGameManager>().m_deadEnemyLastPos = m_currentPos;
+            m_gameManagerObj.GetComponent<OldGameManager>().m_deadEnemyLastRot = m_currentRot;
 
-            m_gameManagerObj.GetComponent<GameManager>().m_enemyDied = true;
+            m_gameManagerObj.GetComponent<OldGameManager>().m_enemyDied = true;
             Destroy(gameObject);
         }
 

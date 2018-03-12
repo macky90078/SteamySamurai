@@ -42,6 +42,7 @@ public class TranslateProjectile : MonoBehaviour {
             target = hit.transform.gameObject;
             // Finds the script attached to the enemy, this is a design issue, made a note of it
             target.BroadcastMessage("DealDamage", damage);
+            Destroy(gameObject);
         }
     }
 

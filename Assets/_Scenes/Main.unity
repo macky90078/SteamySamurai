@@ -158,6 +158,26 @@ Prefab:
       propertyPath: m_Name
       value: Geisha
       objectReference: {fileID: 0}
+    - target: {fileID: 114975521030689790, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
+        type: 2}
+      propertyPath: playerId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114492814212463224, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
+        type: 2}
+      propertyPath: playerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114975521030689790, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
+        type: 2}
+      propertyPath: meleeAttackRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114975521030689790, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
+        type: 2}
+      propertyPath: meleeRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50dc2f1ec05bcf545b9259f905ed2daf, type: 2}
   m_IsPrefabParent: 0
@@ -1229,6 +1249,91 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41f442ce06b254649a75a1f63b6cc347, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &865799595 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1576832202544090, guid: 41f442ce06b254649a75a1f63b6cc347,
+    type: 2}
+  m_PrefabInternal: {fileID: 865799594}
+--- !u!82 &865799596
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 865799595}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 80eccaf058233e2408c6e0551a210b18, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1001 &902204746
 Prefab:
   m_ObjectHideFlags: 0
