@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23844122204187900}
   - component: {fileID: 54192679808624224}
   - component: {fileID: 114248602123695410}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BaseSeekerEnemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 33109384082943386}
   - component: {fileID: 135388676827986780}
   - component: {fileID: 23896880236294398}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445753841989200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.29, y: 3.11, z: 37.55}
+  m_LocalPosition: {x: 23.29, y: 1, z: -26.8}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 4136915519337526}
@@ -195,16 +195,17 @@ MonoBehaviour:
   slowDistPerc: 0.16
   stopDist: 5
   slowRotPerc: 0.25
-  velocityMax: 5
+  velocityMax: 2
   rotationMax: 135
   accelLinearInc: 0.1
   accelAngularInc: 1
   accelLinearMax: 2
   accelAngularMax: 180
-  maxHealth: 100
-  playerOnePrefab: {fileID: 1470177093157268, guid: 9e74b504ff026fc42b2b995f3786e858,
-    type: 2}
-  playerTwoPrefab: {fileID: 1488251529472934, guid: d4739a0b62444054a842a86c79004e73,
+  maxHealth: 5
+  initialState: 0
+  m_gPlayer1: {fileID: 0}
+  m_gPlayer2: {fileID: 0}
+  scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
     type: 2}
 --- !u!135 &135388676827986780
 SphereCollider:

@@ -181,7 +181,6 @@ public class NinjaEnemy : MonoBehaviour {
         {
             hasTarget = false;
             velocity = 0.0F;
-            die();
         }
         else
             hasTarget = true;
@@ -219,7 +218,9 @@ public class NinjaEnemy : MonoBehaviour {
     // Switches to defense mode if health is less than OR equal to half of max health
     void CheckHealth()
     {
-        if (health <= maxHealth / 2)
+        if (health <= 0)
+            die();
+        else if (health <= maxHealth / 2)
         {
             ChangeState(states.defense);
         }

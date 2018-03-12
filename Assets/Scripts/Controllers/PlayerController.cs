@@ -26,6 +26,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     //Look related variables
     public bool isLookInverted = false;
 	private bool select;
+    private bool attacking;
     private Camera cam;
     private float maxTilt = 45f;
     private float minTilt = 45f; //to stop player from looking up in circles
@@ -40,9 +41,23 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     //game related variables
     public bool containsCube { get; set; }
 
+    // Combat variables
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject projectileSpawn;
+    [SerializeField] private float fireRate = 0.3f;
+    [SerializeField] private float rangedDamage = 1.0f;
+    private float shootTimer;
+
+
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
+    }
+
+    private void Start()
+    {
+        shootTimer = fireRate;
     }
 
     void GetInput()
@@ -54,7 +69,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 	    lookVector.y = player.GetAxis("LookVertical");
 
 		select = player.GetButtonDown("Select"); //'a' button on a controller, or the return key
-
+        attacking = player.GetButton("Attack"); // Right trigger
     }
 
 	void ProcessInput()
@@ -67,6 +82,12 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
             Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
+
+        //Combat
+        if (attacking && playerId == 0)
+            shoot();
+        else if (attacking && playerId == 1)
+            melee();
 	}
 	
 	// Update is called once per frame
@@ -74,6 +95,22 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 	{
 		GetInput();
 		ProcessInput();
-		
 	}
+
+    // Shoots forward out of spawn every 'fireRate' amount of seconds
+    void shoot()
+    {
+        shootTimer -= Time.deltaTime;
+        if(shootTimer <= 0)
+        {
+            shootTimer = fireRate;
+            // Creates the projectile and assigns the damage it will do based on the players ranged damage
+            Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation).GetComponent<TranslateProjectile>().SetDamage(rangedDamage);
+        }
+    }
+
+    void melee()
+    {
+
+    }
 }

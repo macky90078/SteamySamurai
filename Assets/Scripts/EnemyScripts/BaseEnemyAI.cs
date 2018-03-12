@@ -51,10 +51,9 @@ public class BaseEnemyAI : MonoBehaviour {
     private enum states { seek, defense, idle };
     private states currState;
 
-    [SerializeField]
-    private GameObject m_gPlayer1;
-    [SerializeField]
-    private GameObject m_gPlayer2;
+    [SerializeField] private GameObject m_gPlayer1;
+    [SerializeField] private GameObject m_gPlayer2;
+    [SerializeField] private GameObject scrapMetalPrefab;
 
     // Use this for initialization
     void Start()
@@ -72,7 +71,7 @@ public class BaseEnemyAI : MonoBehaviour {
     // Intialization of various variables.
     void InitVars()
     {
-        changeState(initialState);
+        ChangeState(initialState);
         health = maxHealth;
         accelLinear = 0.0F;
         accelAngular = 0.0F;
@@ -87,7 +86,7 @@ public class BaseEnemyAI : MonoBehaviour {
         slowRot = rotRemaining * slowRotPerc;
     }
 
-    void changeState(states newState)
+    void ChangeState(states newState)
     {
         switch(newState)
         {
@@ -179,9 +178,11 @@ public class BaseEnemyAI : MonoBehaviour {
     // Switches to defense mode if health is less than OR equal to half of max health
     void CheckHealth()
     {
-        if (health <= maxHealth / 2)
+        if (health <= 0)
+            die();
+        else if (health <= maxHealth / 2)
         {
-            changeState(states.defense);
+            ChangeState(states.defense);
         }
     }
 
@@ -210,5 +211,11 @@ public class BaseEnemyAI : MonoBehaviour {
                 p2Dmg += damage;
                 break;
         }
+    }
+
+    void die()
+    {
+        Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
