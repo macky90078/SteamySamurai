@@ -100,10 +100,13 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         forward = transform.TransformDirection(Vector3.forward);
         center = new Vector3(transform.position.x, transform.position.y + centerHeight, transform.position.z);
         // Ranged or melee depending on ID
-        if (attacking && playerId == 0)
-            shoot();
-        else if (attacking && playerId == 1)
-            melee();
+        if(containsCube == false)
+        {
+            if (attacking && playerId == 0)
+                shoot();
+            else if (attacking && playerId == 1)
+                melee();
+        }
 	}
 	
 	// Update is called once per frame

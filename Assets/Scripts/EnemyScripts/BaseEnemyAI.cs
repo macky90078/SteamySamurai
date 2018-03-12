@@ -204,10 +204,10 @@ public class BaseEnemyAI : MonoBehaviour {
             health = 0;
         switch(playerNum)
         {
-            case 1:
+            case 0:
                 p1Dmg += damage;
                 break;
-            case 2:
+            case 1:
                 p2Dmg += damage;
                 break;
         }
