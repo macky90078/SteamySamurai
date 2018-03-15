@@ -12,6 +12,7 @@ TagManager:
   - enemy
   - moonMirror
   - dataCube
+  - Player2
   layers:
   - Default
   - TransparentFX
