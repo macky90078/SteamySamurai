@@ -322,9 +322,46 @@ Prefab:
       propertyPath: m_gPlayer2
       value: 
       objectReference: {fileID: 1070721184}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114248602123695410, guid: 7b3b3ca853948eb45b31704f0e8b9584, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7b3b3ca853948eb45b31704f0e8b9584, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &245789005 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1445753841989200, guid: 7b3b3ca853948eb45b31704f0e8b9584,
+    type: 2}
+  m_PrefabInternal: {fileID: 245789004}
+--- !u!114 &245789006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 245789005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNinja: 0
+  slowDistPerc: 0.16
+  stopDist: 2
+  slowRotPerc: 0.25
+  velocityMax: 5
+  rotationMax: 135
+  accelLinearInc: 0.1
+  accelAngularInc: 1
+  accelLinearMax: 2
+  accelAngularMax: 180
+  maxHealth: 100
+  initialState: 0
+  m_gPlayer1: {fileID: 1946502909}
+  m_gPlayer2: {fileID: 1070721184}
+  scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
+    type: 2}
+  chargeDist: 15
+  chargeAccelMax: 5
+  chargeAccelInc: 0.5
+  maxChargeVelocity: 25
 --- !u!1001 &289627737
 Prefab:
   m_ObjectHideFlags: 0
@@ -1246,7 +1283,8 @@ Prefab:
       propertyPath: m_gPlayer2
       value: 
       objectReference: {fileID: 1070721184}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114407988078532154, guid: 41f442ce06b254649a75a1f63b6cc347, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 41f442ce06b254649a75a1f63b6cc347, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &865799595 stripped
@@ -1254,86 +1292,37 @@ GameObject:
   m_PrefabParentObject: {fileID: 1576832202544090, guid: 41f442ce06b254649a75a1f63b6cc347,
     type: 2}
   m_PrefabInternal: {fileID: 865799594}
---- !u!82 &865799596
-AudioSource:
+--- !u!114 &865799597
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 865799595}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 80eccaf058233e2408c6e0551a210b18, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNinja: 1
+  slowDistPerc: 0.16
+  stopDist: 2
+  slowRotPerc: 0.25
+  velocityMax: 5
+  rotationMax: 135
+  accelLinearInc: 0.1
+  accelAngularInc: 1
+  accelLinearMax: 2
+  accelAngularMax: 180
+  maxHealth: 100
+  initialState: 0
+  m_gPlayer1: {fileID: 1946502909}
+  m_gPlayer2: {fileID: 1070721184}
+  scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
+    type: 2}
+  chargeDist: 15
+  chargeAccelMax: 5
+  chargeAccelInc: 0.5
+  maxChargeVelocity: 25
 --- !u!1001 &902204746
 Prefab:
   m_ObjectHideFlags: 0
@@ -2310,7 +2299,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1227228238045636, guid: 385dc985d4d27034eab0f1e5824387c8, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: dataCube
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 385dc985d4d27034eab0f1e5824387c8, type: 2}

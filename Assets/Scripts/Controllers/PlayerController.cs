@@ -102,9 +102,9 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         // Ranged or melee depending on ID
         if(containsCube == false)
         {
-            if (attacking && playerId == 0)
+            if (attacking && playerId == 1)
                 shoot();
-            else if (attacking && playerId == 1)
+            else if (attacking && playerId == 0)
                 melee();
         }
 	}
