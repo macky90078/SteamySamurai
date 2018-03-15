@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65875585166116302}
   - component: {fileID: 23844122204187900}
   - component: {fileID: 54192679808624224}
-  - component: {fileID: 114248602123695410}
+  - component: {fileID: 114069242580607998}
   m_Layer: 11
   m_Name: BaseSeekerEnemy
   m_TagString: enemy
@@ -181,7 +181,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114248602123695410
+--- !u!114 &114069242580607998
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -189,13 +189,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445753841989200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a1359e0605824c40949f6b97d500cbc, type: 3}
+  m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNinja: 0
   slowDistPerc: 0.16
-  stopDist: 5
+  stopDist: 2
   slowRotPerc: 0.25
-  velocityMax: 2
+  velocityMax: 5
   rotationMax: 135
   accelLinearInc: 0.1
   accelAngularInc: 1
@@ -207,6 +208,10 @@ MonoBehaviour:
   m_gPlayer2: {fileID: 0}
   scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
     type: 2}
+  chargeDist: 15
+  chargeAccelMax: 5
+  chargeAccelInc: 0.5
+  maxChargeVelocity: 25
 --- !u!135 &135388676827986780
 SphereCollider:
   m_ObjectHideFlags: 1

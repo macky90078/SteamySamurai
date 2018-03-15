@@ -22,7 +22,7 @@ public class AttackEnemy : MonoBehaviour {
             {
                 if (hit.transform.gameObject.tag == "enemy")
                 {
-                    hit.transform.gameObject.GetComponent<BaseEnemyAI>().DealDamage(damage, 1);
+                    hit.transform.gameObject.GetComponent<SeekEnemy>().DealDamage(damage, 0, true);
                 }
             }
         }
@@ -34,7 +34,7 @@ public class AttackEnemy : MonoBehaviour {
             {
                 if (hit.transform.gameObject.tag == "enemy")
                 {
-                    hit.transform.gameObject.GetComponent<BaseEnemyAI>().DealDamage(damage, 2);
+                    hit.transform.gameObject.GetComponent<SeekEnemy>().DealDamage(damage, 1, false);
                 }
             }
         }

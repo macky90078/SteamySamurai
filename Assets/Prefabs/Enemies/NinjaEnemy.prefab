@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 65969756425273402}
   - component: {fileID: 23814125589682192}
   - component: {fileID: 54460360151798380}
-  - component: {fileID: 114407988078532154}
+  - component: {fileID: 114721383187815834}
   m_Layer: 11
   m_Name: NinjaEnemy
   m_TagString: enemy
@@ -181,7 +181,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114407988078532154
+--- !u!114 &114721383187815834
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -189,11 +189,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1576832202544090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f5a0f9230813f44fbcc35b5111191bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isNinja: 1
   slowDistPerc: 0.16
-  stopDist: 3
+  stopDist: 2
   slowRotPerc: 0.25
   velocityMax: 5
   rotationMax: 135
@@ -208,9 +209,9 @@ MonoBehaviour:
   scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
     type: 2}
   chargeDist: 15
-  chargeAccelMax: 6
-  chargeAccelInc: 2
-  maxChargeVelocity: 50
+  chargeAccelMax: 5
+  chargeAccelInc: 0.5
+  maxChargeVelocity: 25
 --- !u!135 &135548844092707324
 SphereCollider:
   m_ObjectHideFlags: 1

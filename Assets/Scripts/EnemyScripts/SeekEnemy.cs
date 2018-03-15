@@ -67,6 +67,11 @@ public class SeekEnemy : MonoBehaviour {
     private float currAccelMax;
     private float currAccelInc;
     private float currVelocityMax;
+    private bool inCombo;
+    private float comboTimer;
+
+    [Tooltip("Amount of seconds players have to complete combo attack")]
+        [SerializeField] private float comboTimeLimit = 3.0f;
 
     // Use this for initialization
     void Start()
@@ -77,6 +82,7 @@ public class SeekEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        CheckCombo();
         CheckHealth();
         if(isNinja)
             CheckChargeDist();
@@ -220,7 +226,7 @@ public class SeekEnemy : MonoBehaviour {
     void CheckHealth()
     {
         if (health <= 0)
-            die();
+            Die();
         else if (health <= maxHealth / 2)
         {
             ChangeState(states.defense);
@@ -238,12 +244,12 @@ public class SeekEnemy : MonoBehaviour {
 
     // Call this function from other scripts to deal damage to this enemy from 
     // A player source
-    public void DealDamage(float damage, int playerNum)
+    public void DealDamage(float damage, int playerID)
     {
         health -= damage;
         if (health < 0)
             health = 0;
-        switch (playerNum)
+        switch (playerID)
         {
             case 0:
                 p1Dmg += damage;
@@ -252,9 +258,52 @@ public class SeekEnemy : MonoBehaviour {
                 p2Dmg += damage;
                 break;
         }
+        Debug.Log("Player One: " + p1Dmg + "\nPlayer two: " + p2Dmg);
     }
 
-    void die()
+    public void DealDamage(float damage, int playerID, bool ranged)
+    {
+        health -= damage;
+        if (health < 0)
+            health = 0;
+        switch (playerID)
+        {
+            case 0:
+                p1Dmg += damage;
+                break;
+            case 1:
+                p2Dmg += damage;
+                break;
+        }
+        if(!ranged)
+        {
+            StartCombo();
+        }
+        if(ranged && inCombo)
+        {
+            Die();
+        }
+    }
+
+    void StartCombo()
+    {
+        comboTimer = comboTimeLimit;
+        inCombo = true;
+    }
+    
+    void CheckCombo()
+    {
+        if(inCombo)
+        {
+            comboTimer -= Time.deltaTime;
+        }
+        if(inCombo && comboTimer <= 0)
+        {
+            inCombo = false;
+        }
+    }
+
+    void Die()
     {
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
