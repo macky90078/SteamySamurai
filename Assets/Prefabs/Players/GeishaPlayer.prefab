@@ -6354,9 +6354,15 @@ MonoBehaviour:
   isLookInverted: 0
   moveSpeed: 5
   m_damping: 10
+  meleePlayer: 0
+  rangedPlayer: 1
   projectile: {fileID: 1894621904919306, guid: 05663a1beca23ac49b6c8fc154bdf296, type: 2}
   projectileSpawn: {fileID: 1724456754016440}
   fireRate: 0.2
+  rangedDamage: 1
+  meleeAttackRate: 0.2
+  meleeRange: 5
+  meleeDamage: 1
 --- !u!137 &137212199741365034
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

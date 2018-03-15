@@ -46,6 +46,10 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private GameObject target;
     private int enemyMask;
 
+    //This is temporary, only one should be selected true for now
+    [SerializeField] private bool meleePlayer;
+    [SerializeField] private bool rangedPlayer;
+
         // Ranged
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject projectileSpawn;
@@ -67,9 +71,13 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 
     private void Start()
     {
+        // Ensures player cant be both melee and ranged
+        if (meleePlayer && rangedPlayer)
+            meleePlayer = false;
+
         shootTimer = fireRate;
         enemyMask = GameManager.enemyMask;
-        centerHeight = GetComponent<BoxCollider>().center.y;
+        centerHeight = GetComponent<BoxCollider>().center.y;// Finds the center of the attached box collider, used for raycasting from center of player
     }
 
     void GetInput()
@@ -102,9 +110,9 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         // Ranged or melee depending on ID
         if(containsCube == false)
         {
-            if (attacking && playerId == 0)
+            if (attacking && rangedPlayer)
                 shoot();
-            else if (attacking && playerId == 1)
+            else if (attacking && meleePlayer)
                 melee();
         }
 	}
@@ -124,7 +132,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         {
             shootTimer = fireRate;
             // Creates the projectile and assigns the damage it will do based on the players ranged damage
-            Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation).GetComponent<TranslateProjectile>().SetDamage(rangedDamage);
+            Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation).GetComponent<TranslateProjectile>().SetDamage(rangedDamage, playerId);
         }
     }
 
@@ -141,8 +149,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
             if (Physics.Raycast(center, forward, out hit, meleeRange, enemyMask))
             {
                 target = hit.transform.gameObject;
-                // Finds the script attached to the enemy, this is a design issue, made a note of it
-                target.BroadcastMessage("DealDamage", meleeDamage);
+                target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
             }
             Debug.DrawRay(center, forward*meleeRange, Color.red);
         }

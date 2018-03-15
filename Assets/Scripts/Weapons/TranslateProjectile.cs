@@ -8,6 +8,7 @@ public class TranslateProjectile : MonoBehaviour {
     private float damage;
     private int levelMask;
     private int enemyMask;
+    private int sourcePlayerId;
     private Vector3 forward; // The forward vector of this projectile
     private Vector3 startOfRay; // Where to begin raycasting for collision
     private GameObject target; // If something is hit, this is used to store it
@@ -41,7 +42,7 @@ public class TranslateProjectile : MonoBehaviour {
         {
             target = hit.transform.gameObject;
             // Finds the script attached to the enemy, this is a design issue, made a note of it
-            target.BroadcastMessage("DealDamage", damage);
+            target.GetComponent<SeekEnemy>().DealDamage(damage, sourcePlayerId, true);
             Destroy(gameObject);
         }
     }
@@ -52,9 +53,10 @@ public class TranslateProjectile : MonoBehaviour {
     }
 
     // Assign the damage of this projectile
-    public void SetDamage(float dmg)
+    public void SetDamage(float dmg, int playerId)
     {
         damage = dmg;
+        sourcePlayerId = playerId;
     }
     
     //Sets masks from game manager

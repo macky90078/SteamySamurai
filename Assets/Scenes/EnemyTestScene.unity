@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -169,9 +169,46 @@ Prefab:
       propertyPath: m_gPlayer2
       value: 
       objectReference: {fileID: 78164902}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114781724259671412, guid: ce9ddc5f518634c418d5febfe60810a3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ce9ddc5f518634c418d5febfe60810a3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &127823324 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1313174074292082, guid: ce9ddc5f518634c418d5febfe60810a3,
+    type: 2}
+  m_PrefabInternal: {fileID: 127823323}
+--- !u!114 &127823325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127823324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowDistPerc: 0.16
+  stopDist: 3
+  slowRotPerc: 0.25
+  velocityMax: 5
+  rotationMax: 135
+  accelLinearInc: 0.1
+  accelAngularInc: 1
+  accelLinearMax: 2
+  accelAngularMax: 180
+  maxHealth: 100
+  initialState: 0
+  m_gPlayer1: {fileID: 1678022204}
+  m_gPlayer2: {fileID: 78164902}
+  scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
+    type: 2}
+  chargeDist: 15
+  chargeAccelMax: 5
+  chargeAccelInc: 0.5
+  maxChargeVelocity: 25
+  isNinja: 1
 --- !u!1 &357594334
 GameObject:
   m_ObjectHideFlags: 0
