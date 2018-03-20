@@ -1,0 +1,245 @@
+fileFormatVersion: 2
+guid: 9b415cf1b22ed864796bd252a21273c3
+timeCreated: 1521501580
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Back_Plate
+    100002: Back_Plate_End
+    100004: Chest
+    100006: //RootNode
+    100008: Eye
+    100010: Front_Plate
+    100012: Front_Plate_End
+    100014: Head
+    100016: Head_End
+    100018: Hip
+    100020: Left_Ankle
+    100022: Left_Arm
+    100024: Left_Clavicle
+    100026: Left_Elbow
+    100028: Left_Foot
+    100030: Left_Foot_End
+    100032: Left_Index
+    100034: Left_Index1
+    100036: Left_Index2
+    100038: Left_Index_End
+    100040: Left_Knee
+    100042: Left_Leg
+    100044: Left_Middle
+    100046: Left_Middle1
+    100048: Left_Middle2
+    100050: Left_Middle_End
+    100052: Left_Pinky
+    100054: Left_Pinky1
+    100056: Left_Pinky2
+    100058: Left_Pinky_End
+    100060: Left_Plate
+    100062: Left_Plate1
+    100064: Left_Plate1_End
+    100066: Left_Plate_End
+    100068: Left_Ring
+    100070: Left_Ring1
+    100072: Left_Ring2
+    100074: Left_Ring_End
+    100076: Left_Thumb
+    100078: Left_Thumb1
+    100080: Left_Thumb_End
+    100082: Left_Wrist
+    100084: Neck
+    100086: Right_Ankle
+    100088: Right_Arm
+    100090: Right_Clavicle
+    100092: Right_Elbow
+    100094: Right_Foot
+    100096: Right_Foot_End
+    100098: Right_Index
+    100100: Right_Index1
+    100102: Right_Index2
+    100104: Right_Index_End
+    100106: Right_Knee
+    100108: Right_Leg
+    100110: Right_Middle
+    100112: Right_Middle1
+    100114: Right_Middle2
+    100116: Right_Middle_End
+    100118: Right_Pinky
+    100120: Right_Pinky1
+    100122: Right_Pinky2
+    100124: Right_Pinky_End
+    100126: Right_Plate
+    100128: Right_Plate1
+    100130: Right_Plate1_End
+    100132: Right_Plate_End
+    100134: Right_Ring
+    100136: Right_Ring1
+    100138: Right_Ring2
+    100140: Right_Ring_End
+    100142: Right_Thumb
+    100144: Right_Thumb1
+    100146: Right_Thumb_End
+    100148: Right_Wrist
+    100150: Root
+    100152: Samurai
+    100154: Spine1
+    100156: Spine2
+    100158: Spine3
+    400000: Back_Plate
+    400002: Back_Plate_End
+    400004: Chest
+    400006: //RootNode
+    400008: Eye
+    400010: Front_Plate
+    400012: Front_Plate_End
+    400014: Head
+    400016: Head_End
+    400018: Hip
+    400020: Left_Ankle
+    400022: Left_Arm
+    400024: Left_Clavicle
+    400026: Left_Elbow
+    400028: Left_Foot
+    400030: Left_Foot_End
+    400032: Left_Index
+    400034: Left_Index1
+    400036: Left_Index2
+    400038: Left_Index_End
+    400040: Left_Knee
+    400042: Left_Leg
+    400044: Left_Middle
+    400046: Left_Middle1
+    400048: Left_Middle2
+    400050: Left_Middle_End
+    400052: Left_Pinky
+    400054: Left_Pinky1
+    400056: Left_Pinky2
+    400058: Left_Pinky_End
+    400060: Left_Plate
+    400062: Left_Plate1
+    400064: Left_Plate1_End
+    400066: Left_Plate_End
+    400068: Left_Ring
+    400070: Left_Ring1
+    400072: Left_Ring2
+    400074: Left_Ring_End
+    400076: Left_Thumb
+    400078: Left_Thumb1
+    400080: Left_Thumb_End
+    400082: Left_Wrist
+    400084: Neck
+    400086: Right_Ankle
+    400088: Right_Arm
+    400090: Right_Clavicle
+    400092: Right_Elbow
+    400094: Right_Foot
+    400096: Right_Foot_End
+    400098: Right_Index
+    400100: Right_Index1
+    400102: Right_Index2
+    400104: Right_Index_End
+    400106: Right_Knee
+    400108: Right_Leg
+    400110: Right_Middle
+    400112: Right_Middle1
+    400114: Right_Middle2
+    400116: Right_Middle_End
+    400118: Right_Pinky
+    400120: Right_Pinky1
+    400122: Right_Pinky2
+    400124: Right_Pinky_End
+    400126: Right_Plate
+    400128: Right_Plate1
+    400130: Right_Plate1_End
+    400132: Right_Plate_End
+    400134: Right_Ring
+    400136: Right_Ring1
+    400138: Right_Ring2
+    400140: Right_Ring_End
+    400142: Right_Thumb
+    400144: Right_Thumb1
+    400146: Right_Thumb_End
+    400148: Right_Wrist
+    400150: Root
+    400152: Samurai
+    400154: Spine1
+    400156: Spine2
+    400158: Spine3
+    4300000: Samurai
+    9500000: //RootNode
+    13700000: Samurai
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
