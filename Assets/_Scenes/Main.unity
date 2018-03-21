@@ -466,6 +466,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114328708336875882, guid: 718a7f5c35b03d349a25c02689b1abc4,
+        type: 2}
+      propertyPath: _userData.joystickMaps.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4272967913073662, guid: 718a7f5c35b03d349a25c02689b1abc4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -497,6 +502,21 @@ Prefab:
     - target: {fileID: 4272967913073662, guid: 718a7f5c35b03d349a25c02689b1abc4, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328708336875882, guid: 718a7f5c35b03d349a25c02689b1abc4,
+        type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[3].id
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328708336875882, guid: 718a7f5c35b03d349a25c02689b1abc4,
+        type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[3].hardwareGuidString
+      value: d74a350e-fe8b-4e9e-bbcd-efff16d34115
+      objectReference: {fileID: 0}
+    - target: {fileID: 114328708336875882, guid: 718a7f5c35b03d349a25c02689b1abc4,
+        type: 2}
+      propertyPath: _userData.joystickMapIdCounter
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 718a7f5c35b03d349a25c02689b1abc4, type: 2}
