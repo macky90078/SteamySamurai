@@ -2039,7 +2039,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1556290113}
-  - component: {fileID: 1556290114}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2060,19 +2059,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1556290114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1556290112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68b34b7820238574db55e2c3acdb9cc2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sourceCam: {fileID: 2128454322}
-  damage: 1
 --- !u!1001 &1617938003
 Prefab:
   m_ObjectHideFlags: 0
@@ -2537,8 +2523,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2112367373}
---- !u!20 &2128454322 stripped
-Camera:
-  m_PrefabParentObject: {fileID: 20253547195761866, guid: 671f3b529ddcc3943a362eeb3a1cb66e,
-    type: 2}
-  m_PrefabInternal: {fileID: 779005846}
