@@ -42,13 +42,13 @@ public class NinjaEnemy : MonoBehaviour {
     private float p1Dmg; // Amount of damage done from each player
     private float p2Dmg; // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     private bool hasTarget = false;
-    private bool inDefense = false;
+    //private bool inDefense = false;
     private Vector3 playerPos;
     private Vector3 targetPos;
     private Quaternion destRot;
     private GameObject targetObj;
     private enum states { seek, defense, charge, idle };
-    private states currState;
+    //private states currState;
 
     [SerializeField] private GameObject m_gPlayer1;
     [SerializeField] private GameObject m_gPlayer2;
@@ -120,7 +120,7 @@ public class NinjaEnemy : MonoBehaviour {
                 velocity = 0.0f;
                 break;
         }
-        currState = newState;
+        //currState = newState;
     }
 
     //Checks which player did the most damage
