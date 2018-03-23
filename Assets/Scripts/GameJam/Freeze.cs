@@ -5,7 +5,7 @@ using UnityEngine;
 public class NewBehaviourScript : MonoBehaviour
 {
 
-    private GameObject m_hitEnemy = null;
+    //private GameObject m_hitEnemy = null;
     [SerializeField] private Material m_mattFrozen;
 
     // Use this for initialization

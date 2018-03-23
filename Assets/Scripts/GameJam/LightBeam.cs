@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class LightBeam : MonoBehaviour {
 
-	[SerializeField]
-	private float maxDistance = 25.0f;
+	//[SerializeField]
+	//private float maxDistance = 25.0f;
 
 	[SerializeField]
 	private LineRenderer lineRenderer;
 
-	[SerializeField]
-	private float lightSpeed = 5.0f;
+	//[SerializeField]
+	//private float lightSpeed = 5.0f;
 
-	private Vector3 nextPos = Vector3.zero;
-	private Vector3 nextNormal = Vector3.zero;
+	//private Vector3 nextPos = Vector3.zero;
+	//private Vector3 nextNormal = Vector3.zero;
 
-	private int startIndex = 0;
+	//private int startIndex = 0;
 
-	private bool hasHitPoint = false;
+	//private bool hasHitPoint = false;
 
 
-	[SerializeField]
-	private float updateFreq = 0.1f;
+	//[SerializeField]
+	//private float updateFreq = 0.1f;
 	[SerializeField]
 	private float lightDistance = 25.0f;
 	[SerializeField]
@@ -35,7 +35,7 @@ public class LightBeam : MonoBehaviour {
 	private int maxBounce = 5;
 	[SerializeField]
 	private int maxSplit = 5;
-	private float timer = 0;
+	//private float timer = 0;
 
 	private bool loopActive = false;
 	private bool isDrawing = false;
@@ -122,7 +122,7 @@ public class LightBeam : MonoBehaviour {
 				vertexCount++;
 				lineRenderer.SetVertexCount(vertexCount);
 
-				Vector3 lastPos = lightLastPosition + (lightDirection * lightDistance);
+				//Vector3 lastPos = lightLastPosition + (lightDirection * lightDistance);
 
 				lineRenderer.SetPosition(vertexCount - 1, lightLastPosition + (lightDirection * lightDistance));
 

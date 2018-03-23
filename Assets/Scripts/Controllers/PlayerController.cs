@@ -25,14 +25,14 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 
     //Look related variables
     public bool isLookInverted = false;
-	private bool select;
+	//private bool select;
     private bool attacking;
     private Camera cam;
-    private float maxTilt = 45f;
-    private float minTilt = 45f; //to stop player from looking up in circles
+    //private float maxTilt = 45f;
+    //private float minTilt = 45f; //to stop player from looking up in circles
 
     [SerializeField] private float moveSpeed = 10.0f; //how fast player traverses the terrain
-    private float lookSpeed = 20.0f; //how fast the player will look
+    //private float lookSpeed = 20.0f; //how fast the player will look
 
     private float m_LookAngleInDegrees;
 
@@ -88,7 +88,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 	    lookVector.x = player.GetAxis("LookHorizontal");
 	    lookVector.y = player.GetAxis("LookVertical");
 
-		select = player.GetButtonDown("Select"); //'a' button on a controller, or the return key
+		//select = player.GetButtonDown("Select"); //'a' button on a controller, or the return key
         attacking = player.GetButton("Attack"); // Right trigger
     }
 

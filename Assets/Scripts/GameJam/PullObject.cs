@@ -8,7 +8,7 @@ public class PullObject : MonoBehaviour
 	private float pullSpeed = 10.0f;
 
 	[SerializeField]
-	private float pullRange = 10.0f;
+	//private float pullRange = 10.0f;
 
 	private bool isPulling = false;
 	private bool isrunningCoroutine = false;

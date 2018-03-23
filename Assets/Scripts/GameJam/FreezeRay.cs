@@ -5,7 +5,7 @@ using UnityEngine;
 public class FreezeRay : MonoBehaviour {
 
 
-    private GameObject m_hitEnemy = null;
+    //private GameObject m_hitEnemy = null;
 
     // Update is called once per frame
     void Update()
