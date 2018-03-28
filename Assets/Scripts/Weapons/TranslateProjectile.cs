@@ -32,6 +32,7 @@ public class TranslateProjectile : MonoBehaviour {
         // Destroys self if hits level objects
         if (Physics.Raycast(transform.position, forward, 2, levelMask))
         {
+            Debug.Log("hit");
             Destroy(gameObject);
         }
 

@@ -206,12 +206,13 @@ MonoBehaviour:
   initialState: 0
   m_gPlayer1: {fileID: 0}
   m_gPlayer2: {fileID: 0}
-  scrapMetalPrefab: {fileID: 1643118939213864, guid: 7c80e9344e4686f4791685af1284cc82,
+  scrapMetalPrefab: {fileID: 1028190345729578, guid: 4df0a3c0c7478854eb05fd4db6392c8c,
     type: 2}
   chargeDist: 15
   chargeAccelMax: 5
   chargeAccelInc: 0.5
   maxChargeVelocity: 25
+  comboTimeLimit: 3
 --- !u!135 &135388676827986780
 SphereCollider:
   m_ObjectHideFlags: 1

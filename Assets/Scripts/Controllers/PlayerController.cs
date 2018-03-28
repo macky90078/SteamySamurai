@@ -4,16 +4,17 @@ using UnityEngine;
 using Rewired;
 public class PlayerController : MonoBehaviour {
 
-/*
- * This class can later be used for controlling the player and otherwise. 
-For now, I've decided not to edit the existing PlayerController.cs file.
-There is also setup blocked out for player looking, not sure how it will be implemented.
+    /*
+     * This class can later be used for controlling the player and otherwise. 
+    For now, I've decided not to edit the existing PlayerController.cs file.
+    There is also setup blocked out for player looking, not sure how it will be implemented.
 
-In order to ajust any of the control maps, you will need to edit the 'Rewired Input Manager' prefab or else nothing will sync. Also, the input manager doesn't
-transfer from scene to scene, so you'll need to add new prefabs to each scene
-		                                                            
-                                                                   
-*/
+    In order to ajust any of the control maps, you will need to edit the 'Rewired Input Manager' prefab or else nothing will sync. Also, the input manager doesn't
+    transfer from scene to scene, so you'll need to add new prefabs to each scene                                                                
+    */
+
+    public GameManager gameManager;
+    public int scrapMetal = 0;
 
 	//Rewired critical variables
 	public int playerId = 0; //the player controller ID. I've set up two controllers, one for each player. 0 is player one, 1 is player two
@@ -46,7 +47,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private GameObject target;
     private int enemyMask;
 
-    //This is temporary, only one should be selected true for now
+    
     [SerializeField] private bool meleePlayer;
     [SerializeField] private bool rangedPlayer;
 
@@ -78,6 +79,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         shootTimer = fireRate;
         enemyMask = GameManager.enemyMask;
         centerHeight = GetComponent<BoxCollider>().center.y;// Finds the center of the attached box collider, used for raycasting from center of player
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     void GetInput()

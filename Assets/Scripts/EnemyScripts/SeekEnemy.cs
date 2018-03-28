@@ -306,6 +306,7 @@ public class SeekEnemy : MonoBehaviour {
     void Die()
     {
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().enemiesKilled += 1;
         Destroy(gameObject);
     }
 }
