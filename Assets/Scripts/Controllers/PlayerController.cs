@@ -27,7 +27,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     public bool isLookInverted = false;
 	//private bool select;
     private bool attacking;
-    private Camera cam;
+    [SerializeField] private GameObject cam;
     //private float maxTilt = 45f;
     //private float minTilt = 45f; //to stop player from looking up in circles
 
@@ -64,9 +64,14 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private Vector3 center;
     private float centerHeight = 0.7f;
 
+
+    //Animations
+    private Animator m_animator;
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
+        m_animator = gameObject.GetComponent<Animator>();
     }
 
     private void Start()
@@ -94,11 +99,23 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 
 	void ProcessInput()
 	{
-		transform.Translate(moveVector * Time.deltaTime * moveSpeed); //moving the player
+        Vector3 direction = new Vector3(moveVector.x, 0.0f, moveVector.z); //cam.transform.forward;
+        //direction.y = 0;
 
-        if(lookVector.x != 0.0f || lookVector.y != 0.0f)
+        direction = cam.transform.TransformDirection(direction);
+
+        transform.position += direction * moveSpeed * Time.deltaTime;
+        //transform.Translate(moveVector * Time.deltaTime * moveSpeed); //moving the player
+
+        if (lookVector.x != 0.0f || lookVector.y != 0.0f)
         {
             m_LookAngleInDegrees = Mathf.Atan2(lookVector.x, lookVector.y) * Mathf.Rad2Deg;
+            Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
+        }
+        else if(lookVector.x <= 0.0f || lookVector.y <= 0.0f)
+        {
+            m_LookAngleInDegrees = Mathf.Atan2(moveVector.x, moveVector.z) * Mathf.Rad2Deg;
             Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
@@ -120,6 +137,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
 	// Update is called once per frame
 	void Update() 
 	{
+        m_animator.SetFloat("Speed", Mathf.Abs(moveVector.magnitude));
 		GetInput();
 		ProcessInput();
 	}

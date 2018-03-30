@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 461136}
-  - 114: {fileID: 11461132}
-  - 114: {fileID: 11461136}
+  - component: {fileID: 461136}
+  - component: {fileID: 11461132}
+  - component: {fileID: 11461136}
   m_Layer: 0
   m_Name: RewiredEventSystem
   m_TagString: Untagged
@@ -29,6 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11461132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -57,6 +58,7 @@ MonoBehaviour:
   useAllRewiredGamePlayers: 1
   useRewiredSystemPlayer: 1
   rewiredPlayerIds: 00000000
+  usePlayingPlayersOnly: 0
   moveOneElementPerAxisPress: 0
   m_HorizontalAxis: UIHorizontal
   m_VerticalAxis: UIVertical
@@ -78,4 +80,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 161136}
   m_IsPrefabParent: 1
-  m_IsExploded: 1
