@@ -64,6 +64,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
     private Vector3 center;
     private float centerHeight = 0.7f;
 
+    public Vector3 test;
 
     //Animations
     private Animator m_animator;
@@ -103,9 +104,13 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         //direction.y = 0;
 
         direction = cam.transform.TransformDirection(direction);
+        direction.y = 0;
+        test = direction;
+
+        lookVector = cam.transform.TransformDirection(lookVector);
 
         transform.position += direction * moveSpeed * Time.deltaTime;
-        //transform.Translate(moveVector * Time.deltaTime * moveSpeed); //moving the player
+        //transform.Translate(direction * Time.deltaTime * moveSpeed); //moving the player
 
         if (lookVector.x != 0.0f || lookVector.y != 0.0f)
         {
@@ -115,7 +120,7 @@ transfer from scene to scene, so you'll need to add new prefabs to each scene
         }
         else if(lookVector.x <= 0.0f || lookVector.y <= 0.0f)
         {
-            m_LookAngleInDegrees = Mathf.Atan2(moveVector.x, moveVector.z) * Mathf.Rad2Deg;
+            m_LookAngleInDegrees = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
