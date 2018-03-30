@@ -51,8 +51,8 @@ public class SeekEnemy : MonoBehaviour {
     private enum states { seek, defense, charge, idle };
     //private states currState;
 
-    [SerializeField] private GameObject m_gPlayer1;
-    [SerializeField] private GameObject m_gPlayer2;
+    private GameObject m_gPlayer1;
+    private GameObject m_gPlayer2;
     [SerializeField] private GameObject scrapMetalPrefab;
     
     [Tooltip("Range that character should start charging")]
@@ -70,8 +70,12 @@ public class SeekEnemy : MonoBehaviour {
     private bool inCombo;
     private float comboTimer;
 
+
+
     [Tooltip("Amount of seconds players have to complete combo attack")]
         [SerializeField] private float comboTimeLimit = 3.0f;
+
+    private GameObject[] players;
 
     // Use this for initialization
     void Start()
@@ -100,6 +104,9 @@ public class SeekEnemy : MonoBehaviour {
         currAccelInc = accelLinearInc;
         currAccelMax = accelLinearMax;
         currVelocityMax = velocityMax;
+
+        m_gPlayer1 = GameObject.FindGameObjectWithTag("Player1").transform.parent.gameObject;
+        m_gPlayer2 = GameObject.FindGameObjectWithTag("Player2").transform.parent.gameObject;
     }
 
     // Initializes movement
@@ -306,6 +313,7 @@ public class SeekEnemy : MonoBehaviour {
     void Die()
     {
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().enemiesKilled += 1;
         Destroy(gameObject);
     }
 }

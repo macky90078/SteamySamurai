@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114441868736703046}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,9 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c01196bce9b3c6498967ca4091a2af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_deadEnemyLastPos: {x: 0, y: 0, z: 0}
-  m_deadEnemyLastRot: {x: 0, y: 0, z: 0, w: 0}
-  m_enemyDied: 0
-  m_shattedEnemyObj: {fileID: 1785821893826310, guid: 8bc729f226d8de843ae813989fedacb2,
-    type: 2}
-  m_mattFrozen: {fileID: 2100000, guid: 9015e889ea651434c8d74baca1d518d1, type: 2}
+  enemiesPerWave: 1
+  numOfWaves: 3
