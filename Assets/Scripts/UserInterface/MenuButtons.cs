@@ -26,8 +26,16 @@ public class MenuButtons : MonoBehaviour {
         SceneManager.LoadScene("LoadingScreen");
     }
 
+    public void StartGame()
+    {
+        GameManager.NextScene = sceneName;
+        SceneManager.LoadScene("LoadingScreen");
+        GameManager.reference.StartWave();
+    }
+
     public void ResumeGame()
     {
+        GameManager.reference.ChangeState(GameManager.gameState.playing);
         Time.timeScale = 1;
         pauseCanvas.gameObject.SetActive(false);
     }

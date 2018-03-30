@@ -43,6 +43,12 @@ public class PlayerController : MonoBehaviour {
     public bool containsCube { get; set; }
 
     // Combat variables
+    [SerializeField] private float maxHealth = 20;
+    private float health;
+    //Buffs
+    [HideInInspector] public bool hasMoveBuff = false;
+    [HideInInspector] public bool hasAttackBuff = false;
+
     private Vector3 forward;
     private GameObject target;
     private int enemyMask;
@@ -65,6 +71,10 @@ public class PlayerController : MonoBehaviour {
     private Vector3 center;
     private float centerHeight = 0.7f;
 
+    //Canvas stuff =(
+    [SerializeField] private GameObject loseCanvas;
+    [SerializeField] private GameObject winCanvas;
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
@@ -72,6 +82,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Start()
     {
+        scrapMetal = 10;
         // Ensures player cant be both melee and ranged
         if (meleePlayer && rangedPlayer)
             meleePlayer = false;
@@ -124,7 +135,16 @@ public class PlayerController : MonoBehaviour {
 	{
 		GetInput();
 		ProcessInput();
+        GameStuff(); // =(
 	}
+
+    void GameStuff()
+    {
+        if (GameManager.reference.currState == GameManager.gameState.gameOver)
+            loseCanvas.SetActive(true);
+        if (GameManager.reference.currState == GameManager.gameState.gameWon)
+            winCanvas.SetActive(true);
+    }
 
     // Shoots forward out of spawn every 'fireRate' amount of seconds
     void shoot()
@@ -155,5 +175,36 @@ public class PlayerController : MonoBehaviour {
             }
             Debug.DrawRay(center, forward*meleeRange, Color.red);
         }
+    }
+
+    //Buff functions
+
+    public void buffAttack(float inc)
+    {
+        if(hasAttackBuff == false)
+        {
+            if (meleePlayer)
+                meleeDamage += inc;
+            else if (rangedPlayer)
+                rangedDamage += inc;
+            hasAttackBuff = true;
+        }
+        Debug.Log("Player" + playerId + "buffed");
+    }
+
+    public void buffSpeed(float inc)
+    {
+        if(hasMoveBuff == false)
+        {
+            moveSpeed += inc;
+            hasMoveBuff = true;
+        }
+        Debug.Log("Player" + playerId + "buffed");
+    }
+
+    public void buffHealth()
+    {
+        health = maxHealth;
+        Debug.Log("Player" + playerId + "buffed");
     }
 }

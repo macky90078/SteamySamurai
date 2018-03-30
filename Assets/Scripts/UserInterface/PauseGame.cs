@@ -22,11 +22,13 @@ public class PauseGame : MonoBehaviour {
         {
             if (pauseMenu.activeInHierarchy == true)
             {
+                GameManager.reference.ChangeState(GameManager.gameState.playing);
                 pauseMenu.SetActive(false);
                 Time.timeScale = 1;
             }
             if (pauseMenu.activeInHierarchy == false)
             {
+                GameManager.reference.ChangeState(GameManager.gameState.paused);
                 pauseMenu.SetActive(true);
                 Time.timeScale = 0;
             }

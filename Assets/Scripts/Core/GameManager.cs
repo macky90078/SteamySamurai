@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class GameManager : MonoBehaviour {
 
     //Public variables
+    public static GameManager reference;
     public enum gameState { mainMenu, playing, paused, buffSelect, gameOver, gameWon };//Add state to update when adding new state
-    public static gameState currState;
+    public gameState currState;
 
     public static string NextScene;
     public static int levelMask; //Level architecture and obstacles
@@ -15,6 +17,8 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public int enemiesSpawned;
     [HideInInspector] public bool spawnEnemies;
     [HideInInspector] public int enemiesKilled;
+    [HideInInspector] public int[] playerIds;
+    [HideInInspector] public int buffIndex = 0;//+1 each time a player selects, moves to next player
 
     //Private variables
     [SerializeField] private int enemiesPerWave;
@@ -30,10 +34,12 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        ChangeState(gameState.playing);
-        spawnEnemies = true;
+        reference = gameObject.GetComponent<GameManager>();
+        playerIds = ReInput.players.GetPlayerIds();
+        ChangeState(gameState.mainMenu);
     }
 
+    //***** GAME LOOP *****//
     // Update is called once per frame
     void Update()
     {
@@ -44,6 +50,7 @@ public class GameManager : MonoBehaviour {
                 CheckPlayState();
                 break;
             case gameState.buffSelect:
+                CheckBuffState();
                 break;
             case gameState.mainMenu:
                 break;
@@ -56,6 +63,69 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    public void ChangeState(gameState state)
+    {
+        currState = state;
+        SetControllerMap();
+        switch(currState)
+        {
+            case gameState.playing:
+                break;
+            case gameState.buffSelect:
+                SetupBuffSelect();
+                break;
+            case gameState.mainMenu:
+                break;
+            case gameState.gameOver:
+                GameOver(false);
+                break;
+            case gameState.gameWon:
+                GameOver(true);
+                break;
+            case gameState.paused:
+                break;
+        }
+    }
+
+    void SetControllerMap()
+    {
+        switch(currState)
+        {
+            case gameState.playing:
+                foreach(int x in playerIds)
+                {
+                    SetMap(x, true, "Default");
+                    SetMap(x, false, "Menu");
+                }
+                break;
+            case gameState.buffSelect:
+            case gameState.mainMenu:
+            case gameState.gameOver:
+            case gameState.gameWon:
+            case gameState.paused:
+                foreach (int x in playerIds)
+                {
+                    SetMap(x, false, "Default");
+                    SetMap(x, true, "Menu");
+                }
+                break;
+        }
+    }
+
+    void SetMap(int id, bool mapState, string category)
+    {
+        ReInput.players.GetPlayer(id).controllers.maps.SetMapsEnabled(mapState, category);
+    }
+
+    //--- Playing State---//
+    //Starts a wave, and the main game loop
+    public void StartWave()
+    {
+        spawnEnemies = true;
+        ChangeState(gameState.playing);
+    }
+
+    //Update loop while playing in the wave, main game loop
     void CheckPlayState()
     {
         if (currWave >= numOfWaves && enemiesKilled == enemiesPerWave)//Check if game won, at max wave and all enemies defeated
@@ -66,6 +136,31 @@ public class GameManager : MonoBehaviour {
             ChangeState(gameState.buffSelect);
     }
 
+    //----- Buff State -----//
+    void SetupBuffSelect()
+    {
+        GameObject.FindGameObjectWithTag("BuffCanvas").SetActive(true);
+        buffIndex = 0;
+    }
+
+    void CheckBuffState()
+    {
+        if (buffIndex > 1)//Need to change this so its dynamic, for possibility of more than one player
+        {
+            StartWave();
+            GameObject.FindGameObjectWithTag("BuffCanvas").SetActive(false);
+            buffIndex = 0;
+        }
+    }
+
+    void GameOver(bool won)
+    {
+        enemiesSpawned = 0;
+        spawnEnemies = false;
+        enemiesKilled = 0;
+    }
+
+    //***** INTIALIZATION *****//
     //Assigns the int value of all the masks that are used in the game
     void GetMasks()
     {
@@ -73,16 +168,8 @@ public class GameManager : MonoBehaviour {
         enemyMask = LayerMask.GetMask("enemyMask");
     }
 
-    void ChangeState(gameState state)
-    {
-        currState = state;
-    }
-    
     public void StartLoadingScreen()
     {
         SceneManager.LoadScene("loadingScreen");
     }
-
-    public string GetNextScene() { return NextScene; }
-    public void SetNextScene(string nextSceneName) { NextScene = nextSceneName; }
 }

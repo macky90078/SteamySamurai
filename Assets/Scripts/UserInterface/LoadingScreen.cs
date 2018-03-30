@@ -43,9 +43,7 @@ public class LoadingScreen : MonoBehaviour {
 
     IEnumerator LoadNewScene()
     {
-        yield return new WaitForSeconds(3);
-
-        AsyncOperation async = SceneManager.LoadSceneAsync(GameManager.NextScene);//GameManager.NextScene);
+        AsyncOperation async = SceneManager.LoadSceneAsync(GameManager.NextScene);
 
         while (!async.isDone)
         {
