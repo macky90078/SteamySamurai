@@ -76,9 +76,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject loseCanvas;
     [SerializeField] private GameObject winCanvas;
 
+    //Animations
+
+    private Animator m_animator;
+
+    public Vector3 test1;
+    public Vector3 test2;
+    public bool isbackped = false;
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
+        m_animator = gameObject.GetComponent<Animator>();
     }
 
     private void Start()
@@ -117,6 +126,9 @@ public class PlayerController : MonoBehaviour
         lookVector = cam.transform.TransformDirection(lookVector);
 
         transform.position += direction * moveSpeed * Time.deltaTime;
+
+        Vector3 localVel = transform.InverseTransformDirection(direction);
+
         //transform.Translate(direction * Time.deltaTime * moveSpeed); //moving the player
 
         if (lookVector.x != 0.0f || lookVector.y != 0.0f)
@@ -132,6 +144,48 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
 
+        test1 = localVel;
+        test2 = lookVector;
+
+        if (localVel.z < -0.5f)
+        {
+            m_animator.SetBool("BackPedal", true);
+        }
+        else
+        {
+            m_animator.SetBool("BackPedal", false);
+        }
+
+        if (localVel.z > 0.1f)
+        {
+            m_animator.SetBool("IdleRun", true);
+        }
+        else
+        {
+            m_animator.SetBool("IdleRun", false);
+        }
+
+        if (localVel.x > 0.25f)
+        {
+            m_animator.SetBool("RunRight", true);
+        }
+        else
+        {
+            m_animator.SetBool("RunRight", false);
+        }
+
+        if (localVel.x < -0.25f)
+        {
+            m_animator.SetBool("RunLeft", true);
+        }
+        else
+        {
+            m_animator.SetBool("RunLeft", false);
+        }
+
+
+        //Movement Animations
+        m_animator.SetFloat("Speed", moveVector.magnitude);
 
         // Combat
         forward = transform.TransformDirection(Vector3.forward);
@@ -144,6 +198,7 @@ public class PlayerController : MonoBehaviour
             else if (attacking && meleePlayer)
                 melee();
         }
+
     }
 
     // Update is called once per frame

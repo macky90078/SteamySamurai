@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 80d9cf57e9dbb2a4f8f295cf6cd4ecf4
-timeCreated: 1522176779
+guid: 7f615a7c24ffc62439759a1f2f4ca415
+timeCreated: 1522463041
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -163,7 +163,7 @@ ModelImporter:
     400152: Spine1
     400154: Spine2
     400156: Spine3
-    7400000: CubeBackPedal
+    7400000: RunningLeft
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -190,10 +190,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CubeBackPedal
+      name: RunningLeft
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 24
+      lastFrame: 18
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
