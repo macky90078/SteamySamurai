@@ -313,7 +313,6 @@ public class SeekEnemy : MonoBehaviour {
     void Die()
     {
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
-        GameManager.reference.enemiesKilled += 1;
         Destroy(gameObject);
     }
 }

@@ -33,6 +33,7 @@ public class BuffSelection : MonoBehaviour {
     {
         if(GameManager.reference.scrapMetal >= attackBuffCost && GameManager.reference.hasAttackBuff == false)
         {
+            Destroy(GameObject.FindGameObjectWithTag("AttackBuffButton"));
             playerOne.buffAttack(attkSpeedInc);
             playerTwo.buffAttack(attkSpeedInc);
             canScript.buffCanvas.SetActive(false);
@@ -44,13 +45,12 @@ public class BuffSelection : MonoBehaviour {
 
     public void healthBuff()
     {
-        if (GameManager.reference.scrapMetal >= healthBuffCost && GameManager.reference.hasHealthBuff == false)
+        if (GameManager.reference.scrapMetal >= healthBuffCost)
         {
             playerOne.buffHealth();
             playerTwo.buffHealth();
             canScript.buffCanvas.SetActive(false);
             GameManager.reference.scrapMetal -= healthBuffCost;
-            GameManager.reference.hasHealthBuff = true;
             GameManager.reference.StartWave();
         }
     }
@@ -59,6 +59,7 @@ public class BuffSelection : MonoBehaviour {
     {
         if (GameManager.reference.scrapMetal >= moveBuffCost && GameManager.reference.hasMoveBuff == false)
         {
+            Destroy(GameObject.FindGameObjectWithTag("MovementBuffButton"));
             playerOne.buffSpeed(moveSpeedInc);
             playerTwo.buffSpeed(moveSpeedInc);
             canScript.buffCanvas.SetActive(false);

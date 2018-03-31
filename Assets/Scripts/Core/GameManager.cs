@@ -16,19 +16,22 @@ public class GameManager : MonoBehaviour {
     public static int enemyMask; //Enemies
     [HideInInspector] public int enemiesSpawned;
     [HideInInspector] public bool spawnEnemies;
-    [HideInInspector] public int enemiesKilled;
     [HideInInspector] public int[] playerIds;
     [HideInInspector] public int buffIndex = 0;//+1 each time a player selects, moves to next player
     [HideInInspector] public int scrapMetal = 0;
     [HideInInspector] public int waveScrap = 0;
     [HideInInspector] public bool hasAttackBuff = false;
     [HideInInspector] public bool hasMoveBuff = false;
-    [HideInInspector] public bool hasHealthBuff = false;
+
+    public int[] samuraiPerWave;
+    public int[] ninjasPerWave;
+    [HideInInspector] public int samSpawned = 0;
+    [HideInInspector] public int ninSpawned = 0;
+    [HideInInspector] public int currWave = 0;
 
     //Private variables
-    [SerializeField] private int enemiesPerWave;
-    [SerializeField] private int numOfWaves;
-    private int currWave = 0;
+    private int enemiesPerWave;
+    private int numOfWaves;
 
     void Awake()
     {
@@ -49,13 +52,13 @@ public class GameManager : MonoBehaviour {
         playerIds = ReInput.players.GetPlayerIds();
         hasAttackBuff = false;
         hasMoveBuff = false;
-        hasHealthBuff = false;
-        enemiesKilled = 0;
         enemiesSpawned = 0;
         scrapMetal = 0;
         spawnEnemies = false;
         currWave = 1;
         waveScrap = 0;
+        numOfWaves = samuraiPerWave.Length;
+        enemiesPerWave = 0;
     }
 
     //***** GAME LOOP *****//
@@ -83,7 +86,7 @@ public class GameManager : MonoBehaviour {
 
     public void ChangeState(gameState state)
     {
-        Debug.Log("Entering " + state);
+        //Debug.Log("Entering " + state);
         currState = state;
         SetControllerMap();
         switch(currState)
@@ -140,9 +143,11 @@ public class GameManager : MonoBehaviour {
     //Starts a wave, and the main game loop
     public void StartWave()
     {
-        enemiesKilled = 0;
+        samSpawned = 0;
+        ninSpawned = 0;
         enemiesSpawned = 0;
         waveScrap = 0;
+        enemiesPerWave = ninjasPerWave[currWave - 1] + samuraiPerWave[currWave - 1];
         spawnEnemies = true;
         ChangeState(gameState.playing);
     }
@@ -150,13 +155,15 @@ public class GameManager : MonoBehaviour {
     //Update loop while playing in the wave, main game loop
     void CheckPlayState()
     {
-        if (currWave >= numOfWaves && waveScrap == enemiesPerWave)//Check if game won, at max wave and all enemies defeated
-            ChangeState(gameState.gameWon);
+        enemiesSpawned = ninSpawned + samSpawned;
         if (enemiesSpawned == enemiesPerWave)//Limit enemies per wave
             spawnEnemies = false;
-        if (waveScrap == enemiesPerWave)//Check if all enemies have been killed this wave
+        if (currWave >= numOfWaves && waveScrap == enemiesPerWave)//Check if game won, at max wave and all enemies defeated
+            ChangeState(gameState.gameWon);
+        else if (waveScrap == enemiesPerWave)//Check if all enemies have been killed this wave
         {
             currWave++;
+            enemiesPerWave = ninjasPerWave[currWave - 1] + samuraiPerWave[currWave - 1];
             ChangeState(gameState.buffSelect);
         }
     }

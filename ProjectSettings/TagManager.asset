@@ -17,6 +17,9 @@ TagManager:
   - BuffCanvas
   - WinCanvas
   - CanvasContainer
+  - Player1
+  - AttackBuffButton
+  - MovementBuffButton
   layers:
   - Default
   - TransparentFX

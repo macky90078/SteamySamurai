@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+    private enum enemyType { samurai, ninja}
+    [SerializeField] enemyType typeOfEnemy;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private float spawnRate = 1.0f;
     [SerializeField] private float initialDelay = 1.0f;
@@ -32,8 +34,26 @@ public class EnemySpawner : MonoBehaviour {
         if(timer <= 0)
         {
             timer = spawnRate;
-            Instantiate(enemyPrefab, transform.position, transform.rotation);
-            gameManager.enemiesSpawned += 1;
+            if(typeOfEnemy == enemyType.samurai && CheckSamSpawn())
+            {
+                Instantiate(enemyPrefab, transform.position, transform.rotation);
+                gameManager.samSpawned += 1;
+            }
+            else if(typeOfEnemy == enemyType.ninja && CheckNinSpawn())
+            {
+                Instantiate(enemyPrefab, transform.position, transform.rotation);
+                gameManager.ninSpawned += 1;
+            }
         }
+    }
+
+    bool CheckSamSpawn()
+    {
+        return (gameManager.samSpawned < gameManager.samuraiPerWave[gameManager.currWave - 1]);
+    }
+
+    bool CheckNinSpawn()
+    {
+        return (gameManager.ninSpawned < gameManager.ninjasPerWave[gameManager.currWave - 1]);
     }
 }
