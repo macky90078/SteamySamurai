@@ -6,22 +6,12 @@ public class ScrapMetal : MonoBehaviour {
 
     [SerializeField] private int scrapValue = 1;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" || collision.gameObject.tag == "Player2")
         {
-            collision.gameObject.GetComponent<PlayerController>().scrapMetal += scrapValue;
-            Debug.Log(collision.gameObject.GetComponent<PlayerController>().scrapMetal);
+            GameManager.reference.scrapMetal += scrapValue;
+            GameManager.reference.waveScrap += scrapValue;
             Destroy(gameObject);
         }
     }

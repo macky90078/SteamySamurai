@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 95394584}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: CanvasContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1246,6 +1246,11 @@ Prefab:
         type: 2}
       propertyPath: loseCanvas
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: numOfWaves
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f9d42311221aa3c41841fff1d63421e4, type: 2}

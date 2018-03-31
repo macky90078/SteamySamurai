@@ -19,11 +19,16 @@ public class GameManager : MonoBehaviour {
     [HideInInspector] public int enemiesKilled;
     [HideInInspector] public int[] playerIds;
     [HideInInspector] public int buffIndex = 0;//+1 each time a player selects, moves to next player
+    [HideInInspector] public int scrapMetal = 0;
+    [HideInInspector] public int waveScrap = 0;
+    [HideInInspector] public bool hasAttackBuff = false;
+    [HideInInspector] public bool hasMoveBuff = false;
+    [HideInInspector] public bool hasHealthBuff = false;
 
     //Private variables
     [SerializeField] private int enemiesPerWave;
     [SerializeField] private int numOfWaves;
-    private int currWave;
+    private int currWave = 0;
 
     void Awake()
     {
@@ -35,8 +40,22 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         reference = gameObject.GetComponent<GameManager>();
-        playerIds = ReInput.players.GetPlayerIds();
+        InitVars();
         ChangeState(gameState.mainMenu);
+    }
+
+    void InitVars()
+    {
+        playerIds = ReInput.players.GetPlayerIds();
+        hasAttackBuff = false;
+        hasMoveBuff = false;
+        hasHealthBuff = false;
+        enemiesKilled = 0;
+        enemiesSpawned = 0;
+        scrapMetal = 0;
+        spawnEnemies = false;
+        currWave = 1;
+        waveScrap = 0;
     }
 
     //***** GAME LOOP *****//
@@ -50,7 +69,6 @@ public class GameManager : MonoBehaviour {
                 CheckPlayState();
                 break;
             case gameState.buffSelect:
-                CheckBuffState();
                 break;
             case gameState.mainMenu:
                 break;
@@ -65,6 +83,7 @@ public class GameManager : MonoBehaviour {
 
     public void ChangeState(gameState state)
     {
+        Debug.Log("Entering " + state);
         currState = state;
         SetControllerMap();
         switch(currState)
@@ -111,7 +130,7 @@ public class GameManager : MonoBehaviour {
                 break;
         }
     }
-
+    //Sets the map of player on or off, based on the bool. Categorys can be found in input manager editor
     void SetMap(int id, bool mapState, string category)
     {
         ReInput.players.GetPlayer(id).controllers.maps.SetMapsEnabled(mapState, category);
@@ -121,6 +140,9 @@ public class GameManager : MonoBehaviour {
     //Starts a wave, and the main game loop
     public void StartWave()
     {
+        enemiesKilled = 0;
+        enemiesSpawned = 0;
+        waveScrap = 0;
         spawnEnemies = true;
         ChangeState(gameState.playing);
     }
@@ -128,36 +150,34 @@ public class GameManager : MonoBehaviour {
     //Update loop while playing in the wave, main game loop
     void CheckPlayState()
     {
-        if (currWave >= numOfWaves && enemiesKilled == enemiesPerWave)//Check if game won, at max wave and all enemies defeated
+        if (currWave >= numOfWaves && waveScrap == enemiesPerWave)//Check if game won, at max wave and all enemies defeated
             ChangeState(gameState.gameWon);
         if (enemiesSpawned == enemiesPerWave)//Limit enemies per wave
             spawnEnemies = false;
-        if (enemiesKilled == enemiesPerWave)//Check if all enemies have been killed this wave
+        if (waveScrap == enemiesPerWave)//Check if all enemies have been killed this wave
+        {
+            currWave++;
             ChangeState(gameState.buffSelect);
+        }
     }
 
     //----- Buff State -----//
     void SetupBuffSelect()
     {
-        GameObject.FindGameObjectWithTag("BuffCanvas").SetActive(true);
-        buffIndex = 0;
-    }
-
-    void CheckBuffState()
-    {
-        if (buffIndex > 1)//Need to change this so its dynamic, for possibility of more than one player
-        {
-            StartWave();
-            GameObject.FindGameObjectWithTag("BuffCanvas").SetActive(false);
-            buffIndex = 0;
-        }
+        GameObject.FindGameObjectWithTag("CanvasContainer").GetComponent<CanvasRef>().buffCanvas.SetActive(true);
     }
 
     void GameOver(bool won)
     {
-        enemiesSpawned = 0;
-        spawnEnemies = false;
-        enemiesKilled = 0;
+        InitVars();
+        if(won == true)
+        {
+            GameObject.FindGameObjectWithTag("CanvasContainer").GetComponent<CanvasRef>().winCanvas.SetActive(true);
+        }
+        else
+        {
+            GameObject.FindGameObjectWithTag("CanvasContainer").GetComponent<CanvasRef>().loseCanvas.SetActive(true);
+        }
     }
 
     //***** INTIALIZATION *****//

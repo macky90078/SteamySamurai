@@ -105,8 +105,8 @@ public class SeekEnemy : MonoBehaviour {
         currAccelMax = accelLinearMax;
         currVelocityMax = velocityMax;
 
-        m_gPlayer1 = GameObject.FindGameObjectWithTag("Player1").transform.parent.gameObject;
-        m_gPlayer2 = GameObject.FindGameObjectWithTag("Player2").transform.parent.gameObject;
+        m_gPlayer1 = GameObject.FindGameObjectWithTag("Player");
+        m_gPlayer2 = GameObject.FindGameObjectWithTag("Player2");
     }
 
     // Initializes movement
@@ -313,7 +313,7 @@ public class SeekEnemy : MonoBehaviour {
     void Die()
     {
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().enemiesKilled += 1;
+        GameManager.reference.enemiesKilled += 1;
         Destroy(gameObject);
     }
 }

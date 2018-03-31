@@ -201,9 +201,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4769596765227566}
   - component: {fileID: 95727135347553602}
-  m_Layer: 0
+  - component: {fileID: 114951878686278898}
+  - component: {fileID: 65099656283605976}
+  m_Layer: 11
   m_Name: Robo Ninja
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,7 +791,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425220950282312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35, y: 0.10000001, z: 6.21}
+  m_LocalPosition: {x: 8.213581, y: 0.09999953, z: -5.390317}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4896802342664624}
@@ -854,6 +856,18 @@ Transform:
   m_Father: {fileID: 4419735235388596}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65099656283605976
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1425220950282312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.0360165, z: 0.51270723}
+  m_Center: {x: 0, y: 1.1131718, z: 0.06351733}
 --- !u!95 &95727135347553602
 Animator:
   serializedVersion: 3
@@ -907,6 +921,36 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114951878686278898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1425220950282312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isNinja: 1
+  slowDistPerc: 0.16
+  stopDist: 2
+  slowRotPerc: 0.25
+  velocityMax: 5
+  rotationMax: 135
+  accelLinearInc: 0.1
+  accelAngularInc: 1
+  accelLinearMax: 2
+  accelAngularMax: 180
+  maxHealth: 5
+  initialState: 0
+  scrapMetalPrefab: {fileID: 1028190345729578, guid: 4df0a3c0c7478854eb05fd4db6392c8c,
+    type: 2}
+  chargeDist: 15
+  chargeAccelMax: 5
+  chargeAccelInc: 0.5
+  maxChargeVelocity: 25
+  comboTimeLimit: 3
 --- !u!137 &137426081938556162
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

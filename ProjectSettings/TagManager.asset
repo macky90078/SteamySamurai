@@ -13,10 +13,10 @@ TagManager:
   - moonMirror
   - dataCube
   - Player2
+  - LoseCanvas
   - BuffCanvas
   - WinCanvas
-  - LoseCanvas
-  - Player1
+  - CanvasContainer
   layers:
   - Default
   - TransparentFX

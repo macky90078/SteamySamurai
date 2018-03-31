@@ -15,12 +15,10 @@ public class ControlAssignment : MonoBehaviour {
             if (x.enabled == false)
             {
                 x.enabled = true;
-                Debug.Log(x.name + " enabled");
             }
             if (x.type == ControllerType.Joystick && x.enabled == true)
             {
                 ReInput.players.GetPlayer(count).controllers.AddController(x, true);
-                Debug.Log("David - Controller " + x.name + " assigned to player ID " + count);
                 count++;
                 if (count == numOfPlayers)
                     break;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -235,12 +235,12 @@ Prefab:
     - target: {fileID: 114975521030689790, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
         type: 2}
       propertyPath: playerId
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114492814212463224, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
         type: 2}
       propertyPath: playerID
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 54849331925204506, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
         type: 2}
@@ -1313,9 +1313,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 684090802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3253ad903fff6e34ebc288647b777f9a, type: 3}
+  m_Script: {fileID: 11500000, guid: e670d0a259053d14f8cfefb6f91a05ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buffCanvas: {fileID: 1405232188}
+  loseCanvas: {fileID: 1473660784}
+  winCanvas: {fileID: 1286905323}
 --- !u!1001 &684804420
 Prefab:
   m_ObjectHideFlags: 0
@@ -2018,7 +2021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c062d65f9d02746b1a4002a644fdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID: 1
+  playerID: 0
   pauseCanvas: {fileID: 691736373}
 --- !u!4 &1070721189 stripped
 Transform:
@@ -2602,11 +2605,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buff: 1
   buttonText: {fileID: 1091704152}
+  scrapText: {fileID: 0}
   moveSpeedInc: 10
   attkSpeedInc: 10
   attackBuffCost: 1
   moveBuffCost: 1
-  players: []
+  healthBuffCost: 1
 --- !u!114 &1283575583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3256,9 +3260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93a875b3ef83e048b4a86f7f9db8d4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerText: {fileID: 1211470954}
   scrapText: {fileID: 820397378}
-  anyBuffButton: {fileID: 1283575580}
 --- !u!1001 &1458004331
 Prefab:
   m_ObjectHideFlags: 0
@@ -3707,11 +3709,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buff: 0
   buttonText: {fileID: 526920672}
+  scrapText: {fileID: 0}
   moveSpeedInc: 10
   attkSpeedInc: 10
   attackBuffCost: 1
   moveBuffCost: 1
-  players: []
+  healthBuffCost: 1
 --- !u!114 &1565069262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4434,11 +4437,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buff: 2
   buttonText: {fileID: 277898435}
+  scrapText: {fileID: 0}
   moveSpeedInc: 0
   attkSpeedInc: 0
   attackBuffCost: 1
   moveBuffCost: 1
-  players: []
+  healthBuffCost: 1
 --- !u!114 &1867439250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4570,7 +4574,7 @@ Prefab:
     - target: {fileID: 114741119567567110, guid: 385dc985d4d27034eab0f1e5824387c8,
         type: 2}
       propertyPath: playerId
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4874620440697962, guid: 385dc985d4d27034eab0f1e5824387c8, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -4578,7 +4582,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1227228238045636, guid: 385dc985d4d27034eab0f1e5824387c8, type: 2}
       propertyPath: m_TagString
-      value: Player
+      value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 114741119567567110, guid: 385dc985d4d27034eab0f1e5824387c8,
         type: 2}

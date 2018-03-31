@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     */
 
     public GameManager gameManager;
-    public int scrapMetal = 0;
 
     //Rewired critical variables
     public int playerId = 0; //the player controller ID. I've set up two controllers, one for each player. 0 is player one, 1 is player two
@@ -72,10 +71,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 center;
     private float centerHeight = 0.7f;
 
-    //Canvas stuff =(
-    [SerializeField] private GameObject loseCanvas;
-    [SerializeField] private GameObject winCanvas;
-
     //Animations
 
     private Animator m_animator;
@@ -92,7 +87,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        scrapMetal = 10;
         // Ensures player cant be both melee and ranged
         if (meleePlayer && rangedPlayer)
             meleePlayer = false;
@@ -100,7 +94,7 @@ public class PlayerController : MonoBehaviour
         shootTimer = fireRate;
         enemyMask = GameManager.enemyMask;
         centerHeight = GetComponent<BoxCollider>().center.y;// Finds the center of the attached box collider, used for raycasting from center of player
-        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gameManager = GameManager.reference;
     }
 
     void GetInput()
@@ -147,41 +141,41 @@ public class PlayerController : MonoBehaviour
         test1 = localVel;
         test2 = lookVector;
 
-        if (localVel.z < -0.5f)
-        {
-            m_animator.SetBool("BackPedal", true);
-        }
-        else
-        {
-            m_animator.SetBool("BackPedal", false);
-        }
+        //if (localVel.z < -0.5f)
+        //{
+        //    m_animator.SetBool("BackPedal", true);
+        //}
+        //else
+        //{
+        //    m_animator.SetBool("BackPedal", false);
+        //}
 
-        if (localVel.z > 0.1f)
-        {
-            m_animator.SetBool("IdleRun", true);
-        }
-        else
-        {
-            m_animator.SetBool("IdleRun", false);
-        }
+        //if (localVel.z > 0.1f)
+        //{
+        //    m_animator.SetBool("IdleRun", true);
+        //}
+        //else
+        //{
+        //    m_animator.SetBool("IdleRun", false);
+        //}
 
-        if (localVel.x > 0.25f)
-        {
-            m_animator.SetBool("RunRight", true);
-        }
-        else
-        {
-            m_animator.SetBool("RunRight", false);
-        }
+        //if (localVel.x > 0.25f)
+        //{
+        //    m_animator.SetBool("RunRight", true);
+        //}
+        //else
+        //{
+        //    m_animator.SetBool("RunRight", false);
+        //}
 
-        if (localVel.x < -0.25f)
-        {
-            m_animator.SetBool("RunLeft", true);
-        }
-        else
-        {
-            m_animator.SetBool("RunLeft", false);
-        }
+        //if (localVel.x < -0.25f)
+        //{
+        //    m_animator.SetBool("RunLeft", true);
+        //}
+        //else
+        //{
+        //    m_animator.SetBool("RunLeft", false);
+        //}
 
 
         //Movement Animations
@@ -206,15 +200,6 @@ public class PlayerController : MonoBehaviour
     {
         GetInput();
         ProcessInput();
-        GameStuff(); // =(
-    }
-
-    void GameStuff()
-    {
-        if (GameManager.reference.currState == GameManager.gameState.gameOver)
-            loseCanvas.SetActive(true);
-        if (GameManager.reference.currState == GameManager.gameState.gameWon)
-            winCanvas.SetActive(true);
     }
 
     // Shoots forward out of spawn every 'fireRate' amount of seconds
@@ -248,19 +233,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //Buff functions
+    // Buff functions
 
     public void buffAttack(float inc)
     {
         if (hasAttackBuff == false)
         {
             if (meleePlayer)
-                meleeDamage += inc;
+                 meleeAttackRate -= inc;
             else if (rangedPlayer)
-                rangedDamage += inc;
-            hasAttackBuff = true;
+                fireRate -= inc;
+            GameManager.reference.StartWave();
         }
-        Debug.Log("Player" + playerId + "buffed");
     }
 
     public void buffSpeed(float inc)
@@ -268,14 +252,18 @@ public class PlayerController : MonoBehaviour
         if (hasMoveBuff == false)
         {
             moveSpeed += inc;
-            hasMoveBuff = true;
+            GameManager.reference.StartWave();
         }
-        Debug.Log("Player" + playerId + "buffed");
     }
 
     public void buffHealth()
     {
         health = maxHealth;
-        Debug.Log("Player" + playerId + "buffed");
+        GameManager.reference.StartWave();
+    }
+
+    public void Die()
+    {
+        GameManager.reference.ChangeState(GameManager.gameState.gameOver);
     }
 }

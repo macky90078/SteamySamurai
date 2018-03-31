@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 65009968417300570}
   - component: {fileID: 114612164392421962}
   - component: {fileID: 114468124361856726}
+  - component: {fileID: 54425438129838850}
   m_Layer: 0
   m_Name: samurai
   m_TagString: Untagged
@@ -2467,6 +2468,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1005451178357696}
   m_Mesh: {fileID: 4300000, guid: 190bfee2ea434c2478e902239a06dd65, type: 3}
+--- !u!54 &54425438129838850
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1190419347030664}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!65 &65009968417300570
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2560,11 +2576,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 335d5727be402c242a1717ca4155289b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   playerId: 0
   isLookInverted: 0
   cam: {fileID: 0}
   moveSpeed: 10
   m_damping: 10
+  maxHealth: 20
+  hasMoveBuff: 0
+  hasAttackBuff: 0
   meleePlayer: 1
   rangedPlayer: 0
   projectile: {fileID: 0}
@@ -2574,6 +2594,9 @@ MonoBehaviour:
   meleeAttackRate: 0.5
   meleeRange: 3
   meleeDamage: 1
+  test1: {x: 0, y: 0, z: 0}
+  test2: {x: 0, y: 0, z: 0}
+  isbackped: 0
 --- !u!114 &114612164392421962
 MonoBehaviour:
   m_ObjectHideFlags: 1

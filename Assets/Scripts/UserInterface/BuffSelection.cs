@@ -9,51 +9,62 @@ public class BuffSelection : MonoBehaviour {
     private enum buffType { attackBuff, moveBuff, healthBuff }
     [SerializeField] private buffType buff;
     [SerializeField] private Text buttonText;
+    [SerializeField] private Text scrapText;
     [SerializeField] private float moveSpeedInc = 10;
     [SerializeField] private float attkSpeedInc = 10;
-    [SerializeField]
-    private int attackBuffCost = 1;
-    [SerializeField]
-    private int moveBuffCost = 1;
+    [SerializeField] private int attackBuffCost = 1;
+    [SerializeField] private int moveBuffCost = 1;
+    [SerializeField] private int healthBuffCost = 1;
 
-    private bool buffPicked = false;
-    public GameObject[] players;
+    private CanvasRef canScript;
+    private PlayerController playerOne;
+    private PlayerController playerTwo;
+    
 
 	// Use this for initialization
 	void Start () {
-        players = GameObject.FindGameObjectsWithTag("Player");
+        playerOne = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerTwo = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
+        canScript = GameObject.FindGameObjectWithTag("CanvasContainer").GetComponent<CanvasRef>();
         SetText();
     }
 
     public void attackBuff()
     {
-        GameObject player = findPlayer(GameManager.reference.buffIndex);
-        PlayerController x = player.GetComponent<PlayerController>();
-        if(x.hasAttackBuff == false)
+        if(GameManager.reference.scrapMetal >= attackBuffCost && GameManager.reference.hasAttackBuff == false)
         {
-            x.buffAttack(attkSpeedInc);
-            x.scrapMetal -= attackBuffCost;
-            GameManager.reference.buffIndex++;
+            playerOne.buffAttack(attkSpeedInc);
+            playerTwo.buffAttack(attkSpeedInc);
+            canScript.buffCanvas.SetActive(false);
+            GameManager.reference.scrapMetal -= attackBuffCost;
+            GameManager.reference.hasAttackBuff = true;
+            GameManager.reference.StartWave();
         }
     }
 
     public void healthBuff()
     {
-        GameObject player = findPlayer(GameManager.reference.buffIndex);
-        PlayerController x = player.GetComponent<PlayerController>();
-        x.buffHealth();
-        GameManager.reference.buffIndex++;
+        if (GameManager.reference.scrapMetal >= healthBuffCost && GameManager.reference.hasHealthBuff == false)
+        {
+            playerOne.buffHealth();
+            playerTwo.buffHealth();
+            canScript.buffCanvas.SetActive(false);
+            GameManager.reference.scrapMetal -= healthBuffCost;
+            GameManager.reference.hasHealthBuff = true;
+            GameManager.reference.StartWave();
+        }
     }
 
     public void moveBuff()
     {
-        GameObject player = findPlayer(GameManager.reference.buffIndex);
-        PlayerController x = player.GetComponent<PlayerController>();
-        if(x.hasMoveBuff == false)
+        if (GameManager.reference.scrapMetal >= moveBuffCost && GameManager.reference.hasMoveBuff == false)
         {
-            x.buffSpeed(moveSpeedInc);
-            x.scrapMetal -= moveBuffCost;
-            GameManager.reference.buffIndex++;
+            playerOne.buffSpeed(moveSpeedInc);
+            playerTwo.buffSpeed(moveSpeedInc);
+            canScript.buffCanvas.SetActive(false);
+            GameManager.reference.scrapMetal -= moveBuffCost;
+            GameManager.reference.hasMoveBuff = true;
+            GameManager.reference.StartWave();
         }
     }
 
@@ -68,18 +79,8 @@ public class BuffSelection : MonoBehaviour {
                 buttonText.text = buttonText.text + "Cost: " + moveBuffCost;
                 break;
             case buffType.healthBuff:
-                buttonText.text = buttonText.text + "Free";
+                buttonText.text = buttonText.text + "Cost: " + healthBuffCost;
                 break;
         }
-    }
-
-    public GameObject findPlayer(int id)
-    {
-        for(int i = 0; i < players.Length; i++)
-        {
-            if (players[i].GetComponent<PlayerController>().playerId == id)
-                return players[i];
-        }
-        return null;
     }
 }

@@ -14,14 +14,16 @@ public class EnemySpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gameManager = GameManager.reference;
         timer = initialDelay;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if(gameManager.spawnEnemies == true)
+        {
             SpawnEnemy();
+        }
 	}
 
     void SpawnEnemy()
