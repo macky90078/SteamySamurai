@@ -12,11 +12,5 @@ EditorBuildSettings:
     path: Assets/_Scenes/LoadingScreen.unity
     guid: 5660c9ba8fd3ed745a38f81557dc9a0b
   - enabled: 1
-    path: Assets/_Scenes/Main.unity
-    guid: e27209313ba80ac4f866aee61745544e
-  - enabled: 0
-    path: Assets/_Scenes/Robbox.unity
-    guid: 2f55cc0bc66ad6b4cbc2c25641588be9
-  - enabled: 0
-    path: Assets/_Scenes/Menu.unity
-    guid: fc9fc78e5ff2af445873b1dc3330dc20
+    path: Assets/_Scenes/ThePrettiestLevel.unity
+    guid: 1c869f575402d3d4d83ba3ba963ca0a1

@@ -2653,6 +2653,11 @@ Prefab:
       propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 161171437}
+    - target: {fileID: 114975521030689790, guid: 50dc2f1ec05bcf545b9259f905ed2daf,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50dc2f1ec05bcf545b9259f905ed2daf, type: 2}
   m_IsPrefabParent: 0
@@ -5154,6 +5159,11 @@ Prefab:
       propertyPath: pauseCanvas
       value: 
       objectReference: {fileID: 161171437}
+    - target: {fileID: 114468124361856726, guid: f11a21ccd9a50c741991db75fd165e0e,
+        type: 2}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f11a21ccd9a50c741991db75fd165e0e, type: 2}
   m_IsPrefabParent: 0
