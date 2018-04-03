@@ -189,7 +189,7 @@ public class SeekEnemy : MonoBehaviour {
             Debug.Log(target);
         }
         Debug.DrawRay(center, forward * meleeRange, Color.red);
-        Debug.Log("Slash!");
+        //Debug.Log("Slash!");
     }
 
     // Movement towards target player with smoothing

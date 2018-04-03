@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfEnemy: 1
-  enemyPrefab: {fileID: 1425220950282312, guid: ee2b81ce19b3e3c43808dbc92c017f4a,
+  enemyPrefab: {fileID: 1880499952477314, guid: ecccd2ec53085f74ab546986b0ca8f85,
     type: 2}
   spawnRate: 1
   initialDelay: 1

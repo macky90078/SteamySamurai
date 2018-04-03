@@ -189,7 +189,8 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(center, forward, out hit, meleeRange, enemyMask))
         {
             target = hit.transform.gameObject;
-            target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
+            //target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
+            target.GetComponent<NavMeshEnemy>().DealDamage(meleeDamage, playerId, false);
         }
         Debug.DrawRay(center, forward * meleeRange, Color.red);
         Debug.Log("Slash!");

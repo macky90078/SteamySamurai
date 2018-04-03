@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyAttackStateController : StateMachineBehaviour {
 
-    private SeekEnemy enemyCon;
+    private NavMeshEnemy enemyCon;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyCon = animator.gameObject.GetComponent<SeekEnemy>();
+        enemyCon = animator.gameObject.GetComponent<NavMeshEnemy>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
