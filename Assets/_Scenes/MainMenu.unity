@@ -1298,12 +1298,12 @@ Prefab:
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[0]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[1]
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}

@@ -12,7 +12,7 @@ public class SeekEnemy : MonoBehaviour {
     [Tooltip("Percent of distance from target to start slowing")]
         [SerializeField] private float slowDistPerc = 0.16f; // Percentage of distance away from target location to toggle slow down.
     [Tooltip("Distance to stop from target")]
-        [SerializeField] private float stopDist = 2;
+        [SerializeField] private float stopDist = 2.5f;
     [Tooltip("Percent of distance from desired rotation to start slowing")]
         [SerializeField] private float slowRotPerc = 0.25f; // Percentage of rotation away from target rotation to toggle slow down.
     [Tooltip("Maximum possible velocity")]
@@ -70,12 +70,29 @@ public class SeekEnemy : MonoBehaviour {
     private bool inCombo;
     private float comboTimer;
 
+    private float centerHeight = 0.7f;
+
+    // -- Attack Stuff
+    private Vector3 forward;
+    private Vector3 center;
+    private GameObject target;
+    [SerializeField] private float meleeRange = 3.0f;
+    [HideInInspector] public bool m_canAttack = true;
 
 
     [Tooltip("Amount of seconds players have to complete combo attack")]
         [SerializeField] private float comboTimeLimit = 3.0f;
 
     private GameObject[] players;
+
+    // -- Animations
+    private Animator m_animator;
+
+
+    private void Awake()
+    {
+        m_animator = gameObject.GetComponent<Animator>();
+    }
 
     // Use this for initialization
     void Start()
@@ -86,11 +103,19 @@ public class SeekEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (distTo < stopDist && m_canAttack)
+        {
+            m_canAttack = false;
+            m_animator.SetTrigger("Attack");
+        }
         CheckCombo();
         CheckHealth();
         if(isNinja)
             CheckChargeDist();
         Move();
+
+        forward = transform.TransformDirection(Vector3.forward);
+        center = new Vector3(transform.position.x, transform.position.y + centerHeight, transform.position.z);
     }
 
     // Intialization of various variables.
@@ -153,6 +178,20 @@ public class SeekEnemy : MonoBehaviour {
         rotRemaining = Quaternion.Angle(transform.rotation, destRot);
     }
 
+
+    public void AttackPlayer()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(center, forward, out hit, meleeRange, 12))
+        {
+            target = hit.transform.gameObject;
+            //target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
+            Debug.Log(target);
+        }
+        Debug.DrawRay(center, forward * meleeRange, Color.red);
+        Debug.Log("Slash!");
+    }
+
     // Movement towards target player with smoothing
     void Move()
     {
@@ -176,12 +215,14 @@ public class SeekEnemy : MonoBehaviour {
 
         if (charging)
         {
+            m_animator.SetBool("Sprint", true);
             currVelocityMax = maxChargeVelocity;
             currAccelInc = chargeAccelInc;
             currAccelMax = chargeAccelMax;
         }
         else
         {
+            m_animator.SetBool("Sprint", false);
             currVelocityMax = velocityMax;
             currAccelInc = accelLinearInc;
             currAccelMax = accelLinearMax;
@@ -302,10 +343,12 @@ public class SeekEnemy : MonoBehaviour {
     {
         if(inCombo)
         {
+            m_animator.SetBool("CoreOut", true);
             comboTimer -= Time.deltaTime;
         }
         if(inCombo && comboTimer <= 0)
         {
+            m_animator.SetBool("CoreOut", false);
             inCombo = false;
         }
     }
