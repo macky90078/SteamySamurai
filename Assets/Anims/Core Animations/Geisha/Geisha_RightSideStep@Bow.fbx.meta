@@ -1,0 +1,309 @@
+fileFormatVersion: 2
+guid: baa161de15d702e48a7958c29c63b991
+timeCreated: 1522698428
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Belt_1
+    100002: Belt_2
+    100004: Belt_3
+    100006: Belt_End
+    100008: Bow_Rig:Bottom_1
+    100010: Bow_Rig:Bottom_2
+    100012: Bow_Rig:Bottom_End
+    100014: Bow_Rig:Draw
+    100016: Bow_Rig:emp_bow_low
+    100018: Bow_Rig:Master_Ctrl
+    100020: Bow_Rig:Root
+    100022: Bow_Rig:Top_1
+    100024: Bow_Rig:Top_2
+    100026: Bow_Rig:Top_End
+    100028: Chest
+    100030: COG_CTRL
+    100032: COG_CTRL_OG
+    100034: Dangle_1
+    100036: Dangle_1_End
+    100038: Dangle_2
+    100040: Dangle_2_End
+    100042: Dangle_3
+    100044: Dangle_3_End
+    100046: Geisha
+    100048: Geisha 1
+    100050: //RootNode
+    100052: Hair_Pin
+    100054: Head
+    100056: Hip
+    100058: Left_Ankle
+    100060: Left_Arm
+    100062: Left_Clavicle
+    100064: Left_Elbow
+    100066: Left_Eye
+    100068: Left_Foot
+    100070: Left_Foot_End
+    100072: Left_Hand
+    100074: Left_Index_1
+    100076: Left_Index_2
+    100078: Left_Index_3
+    100080: Left_Index_End
+    100082: Left_Knee
+    100084: Left_Leg
+    100086: Left_Middle_1
+    100088: Left_Middle_2
+    100090: Left_Middle_3
+    100092: Left_Middle_End
+    100094: Left_Pinky_1
+    100096: Left_Pinky_2
+    100098: Left_Pinky_3
+    100100: Left_Pinky_End
+    100102: Left_Ring_1
+    100104: Left_Ring_2
+    100106: Left_Ring_3
+    100108: Left_Ring_End
+    100110: Left_Thumb_1
+    100112: Left_Thumb_2
+    100114: Left_Thumb_End
+    100116: Left_Wrist
+    100118: Master_CTRL
+    100120: MASTER_CTRL_OG
+    100122: Neck
+    100124: Right_Ankle
+    100126: Right_Arm
+    100128: Right_Clavicle
+    100130: Right_Elbow
+    100132: Right_Eye
+    100134: Right_Foot
+    100136: Right_Foot_End
+    100138: Right_Hand
+    100140: Right_Index_1
+    100142: Right_Index_2
+    100144: Right_Index_3
+    100146: Right_Index_End
+    100148: Right_Knee
+    100150: Right_Leg
+    100152: Right_Middle_1
+    100154: Right_Middle_2
+    100156: Right_Middle_3
+    100158: Right_Middle_End
+    100160: Right_Pinky_1
+    100162: Right_Pinky_2
+    100164: Right_Pinky_3
+    100166: Right_Pinky_End
+    100168: Right_Ring_1
+    100170: Right_Ring_2
+    100172: Right_Ring_3
+    100174: Right_Ring_End
+    100176: Right_Thumb_1
+    100178: Right_Thumb_2
+    100180: Right_Thumb_End
+    100182: Right_Wrist
+    100184: Root
+    100186: Spine_1
+    100188: Spine_2
+    400000: Belt_1
+    400002: Belt_2
+    400004: Belt_3
+    400006: Belt_End
+    400008: Bow_Rig:Bottom_1
+    400010: Bow_Rig:Bottom_2
+    400012: Bow_Rig:Bottom_End
+    400014: Bow_Rig:Draw
+    400016: Bow_Rig:emp_bow_low
+    400018: Bow_Rig:Master_Ctrl
+    400020: Bow_Rig:Root
+    400022: Bow_Rig:Top_1
+    400024: Bow_Rig:Top_2
+    400026: Bow_Rig:Top_End
+    400028: Chest
+    400030: COG_CTRL
+    400032: COG_CTRL_OG
+    400034: Dangle_1
+    400036: Dangle_1_End
+    400038: Dangle_2
+    400040: Dangle_2_End
+    400042: Dangle_3
+    400044: Dangle_3_End
+    400046: Geisha
+    400048: Geisha 1
+    400050: //RootNode
+    400052: Hair_Pin
+    400054: Head
+    400056: Hip
+    400058: Left_Ankle
+    400060: Left_Arm
+    400062: Left_Clavicle
+    400064: Left_Elbow
+    400066: Left_Eye
+    400068: Left_Foot
+    400070: Left_Foot_End
+    400072: Left_Hand
+    400074: Left_Index_1
+    400076: Left_Index_2
+    400078: Left_Index_3
+    400080: Left_Index_End
+    400082: Left_Knee
+    400084: Left_Leg
+    400086: Left_Middle_1
+    400088: Left_Middle_2
+    400090: Left_Middle_3
+    400092: Left_Middle_End
+    400094: Left_Pinky_1
+    400096: Left_Pinky_2
+    400098: Left_Pinky_3
+    400100: Left_Pinky_End
+    400102: Left_Ring_1
+    400104: Left_Ring_2
+    400106: Left_Ring_3
+    400108: Left_Ring_End
+    400110: Left_Thumb_1
+    400112: Left_Thumb_2
+    400114: Left_Thumb_End
+    400116: Left_Wrist
+    400118: Master_CTRL
+    400120: MASTER_CTRL_OG
+    400122: Neck
+    400124: Right_Ankle
+    400126: Right_Arm
+    400128: Right_Clavicle
+    400130: Right_Elbow
+    400132: Right_Eye
+    400134: Right_Foot
+    400136: Right_Foot_End
+    400138: Right_Hand
+    400140: Right_Index_1
+    400142: Right_Index_2
+    400144: Right_Index_3
+    400146: Right_Index_End
+    400148: Right_Knee
+    400150: Right_Leg
+    400152: Right_Middle_1
+    400154: Right_Middle_2
+    400156: Right_Middle_3
+    400158: Right_Middle_End
+    400160: Right_Pinky_1
+    400162: Right_Pinky_2
+    400164: Right_Pinky_3
+    400166: Right_Pinky_End
+    400168: Right_Ring_1
+    400170: Right_Ring_2
+    400172: Right_Ring_3
+    400174: Right_Ring_End
+    400176: Right_Thumb_1
+    400178: Right_Thumb_2
+    400180: Right_Thumb_End
+    400182: Right_Wrist
+    400184: Root
+    400186: Spine_1
+    400188: Spine_2
+    4300000: Geisha
+    4300002: Bow_Rig:emp_bow_low
+    7400000: Bow
+    9500000: //RootNode
+    13700000: Bow_Rig:emp_bow_low
+    13700002: Geisha 1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Spine_1' has translation animation that will
+      be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bow
+      takeName: Take 001
+      firstFrame: 477
+      lastFrame: 503
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

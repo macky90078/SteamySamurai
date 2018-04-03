@@ -1,0 +1,285 @@
+fileFormatVersion: 2
+guid: 4b3c4ee4036ea3b4998363714a3d11d5
+timeCreated: 1522710795
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Belt_1
+    100002: Belt_2
+    100004: Belt_3
+    100006: Belt_End
+    100008: Chest
+    100010: COG_CTRL
+    100012: COG_CTRL_OG
+    100014: Dangle_1
+    100016: Dangle_1_End
+    100018: Dangle_2
+    100020: Dangle_2_End
+    100022: Dangle_3
+    100024: Dangle_3_End
+    100026: Geisha 1
+    100028: //RootNode
+    100030: Hair_Pin
+    100032: Head
+    100034: Hip
+    100036: Left_Ankle
+    100038: Left_Arm
+    100040: Left_Clavicle
+    100042: Left_Elbow
+    100044: Left_Eye
+    100046: Left_Foot
+    100048: Left_Foot_End
+    100050: Left_Hand
+    100052: Left_Index_1
+    100054: Left_Index_2
+    100056: Left_Index_3
+    100058: Left_Index_End
+    100060: Left_Knee
+    100062: Left_Leg
+    100064: Left_Middle_1
+    100066: Left_Middle_2
+    100068: Left_Middle_3
+    100070: Left_Middle_End
+    100072: Left_Pinky_1
+    100074: Left_Pinky_2
+    100076: Left_Pinky_3
+    100078: Left_Pinky_End
+    100080: Left_Ring_1
+    100082: Left_Ring_2
+    100084: Left_Ring_3
+    100086: Left_Ring_End
+    100088: Left_Thumb_1
+    100090: Left_Thumb_2
+    100092: Left_Thumb_End
+    100094: Left_Wrist
+    100096: Master_CTRL
+    100098: MASTER_CTRL_OG
+    100100: Neck
+    100102: Right_Ankle
+    100104: Right_Arm
+    100106: Right_Clavicle
+    100108: Right_Elbow
+    100110: Right_Eye
+    100112: Right_Foot
+    100114: Right_Foot_End
+    100116: Right_Hand
+    100118: Right_Index_1
+    100120: Right_Index_2
+    100122: Right_Index_3
+    100124: Right_Index_End
+    100126: Right_Knee
+    100128: Right_Leg
+    100130: Right_Middle_1
+    100132: Right_Middle_2
+    100134: Right_Middle_3
+    100136: Right_Middle_End
+    100138: Right_Pinky_1
+    100140: Right_Pinky_2
+    100142: Right_Pinky_3
+    100144: Right_Pinky_End
+    100146: Right_Ring_1
+    100148: Right_Ring_2
+    100150: Right_Ring_3
+    100152: Right_Ring_End
+    100154: Right_Thumb_1
+    100156: Right_Thumb_2
+    100158: Right_Thumb_End
+    100160: Right_Wrist
+    100162: Root
+    100164: Spine_1
+    100166: Spine_2
+    100168: Geisha
+    400000: Belt_1
+    400002: Belt_2
+    400004: Belt_3
+    400006: Belt_End
+    400008: Chest
+    400010: COG_CTRL
+    400012: COG_CTRL_OG
+    400014: Dangle_1
+    400016: Dangle_1_End
+    400018: Dangle_2
+    400020: Dangle_2_End
+    400022: Dangle_3
+    400024: Dangle_3_End
+    400026: Geisha 1
+    400028: //RootNode
+    400030: Hair_Pin
+    400032: Head
+    400034: Hip
+    400036: Left_Ankle
+    400038: Left_Arm
+    400040: Left_Clavicle
+    400042: Left_Elbow
+    400044: Left_Eye
+    400046: Left_Foot
+    400048: Left_Foot_End
+    400050: Left_Hand
+    400052: Left_Index_1
+    400054: Left_Index_2
+    400056: Left_Index_3
+    400058: Left_Index_End
+    400060: Left_Knee
+    400062: Left_Leg
+    400064: Left_Middle_1
+    400066: Left_Middle_2
+    400068: Left_Middle_3
+    400070: Left_Middle_End
+    400072: Left_Pinky_1
+    400074: Left_Pinky_2
+    400076: Left_Pinky_3
+    400078: Left_Pinky_End
+    400080: Left_Ring_1
+    400082: Left_Ring_2
+    400084: Left_Ring_3
+    400086: Left_Ring_End
+    400088: Left_Thumb_1
+    400090: Left_Thumb_2
+    400092: Left_Thumb_End
+    400094: Left_Wrist
+    400096: Master_CTRL
+    400098: MASTER_CTRL_OG
+    400100: Neck
+    400102: Right_Ankle
+    400104: Right_Arm
+    400106: Right_Clavicle
+    400108: Right_Elbow
+    400110: Right_Eye
+    400112: Right_Foot
+    400114: Right_Foot_End
+    400116: Right_Hand
+    400118: Right_Index_1
+    400120: Right_Index_2
+    400122: Right_Index_3
+    400124: Right_Index_End
+    400126: Right_Knee
+    400128: Right_Leg
+    400130: Right_Middle_1
+    400132: Right_Middle_2
+    400134: Right_Middle_3
+    400136: Right_Middle_End
+    400138: Right_Pinky_1
+    400140: Right_Pinky_2
+    400142: Right_Pinky_3
+    400144: Right_Pinky_End
+    400146: Right_Ring_1
+    400148: Right_Ring_2
+    400150: Right_Ring_3
+    400152: Right_Ring_End
+    400154: Right_Thumb_1
+    400156: Right_Thumb_2
+    400158: Right_Thumb_End
+    400160: Right_Wrist
+    400162: Root
+    400164: Spine_1
+    400166: Spine_2
+    400168: Geisha
+    4300000: Geisha
+    7400000: Box
+    9500000: //RootNode
+    13700000: Geisha 1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Box
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 660271a70068f5f458bc0e2c9376b074,
+    type: 3}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVector;
     private Vector2 lookVector;
 
+    public Quaternion eulerAngle;
+
     //Look related variables
     public bool isLookInverted = false;
     //private bool select;
@@ -72,8 +74,12 @@ public class PlayerController : MonoBehaviour
     private float centerHeight = 0.7f;
 
     //Animations
-
+    [HideInInspector] public Vector3 m_localVel;
     private Animator m_animator;
+
+    [HideInInspector] public bool m_attackAnimationStart = false;
+    [HideInInspector] public bool m_geishaAttackAnimationEnd = false;
+    public bool m_canAttack = true;
 
     public Vector3 test1;
     public Vector3 test2;
@@ -119,67 +125,33 @@ public class PlayerController : MonoBehaviour
 
         lookVector = cam.transform.TransformDirection(lookVector);
 
-        transform.position += direction * moveSpeed * Time.deltaTime;
+        if (m_canAttack)
+        {
+            transform.position += direction * moveSpeed * Time.deltaTime;
+        }
 
-        Vector3 localVel = transform.InverseTransformDirection(direction);
+        m_localVel = transform.InverseTransformDirection(direction);
 
         //transform.Translate(direction * Time.deltaTime * moveSpeed); //moving the player
 
         if (lookVector.x != 0.0f || lookVector.y != 0.0f)
         {
             m_LookAngleInDegrees = Mathf.Atan2(lookVector.x, lookVector.y) * Mathf.Rad2Deg;
-            Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
+            eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
         else if (lookVector.x <= 0.0f || lookVector.y <= 0.0f)
         {
             m_LookAngleInDegrees = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            Quaternion eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
+            eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
         }
 
-        test1 = localVel;
-        test2 = lookVector;
-
-        //if (localVel.z < -0.5f)
-        //{
-        //    m_animator.SetBool("BackPedal", true);
-        //}
-        //else
-        //{
-        //    m_animator.SetBool("BackPedal", false);
-        //}
-
-        //if (localVel.z > 0.1f)
-        //{
-        //    m_animator.SetBool("IdleRun", true);
-        //}
-        //else
-        //{
-        //    m_animator.SetBool("IdleRun", false);
-        //}
-
-        //if (localVel.x > 0.25f)
-        //{
-        //    m_animator.SetBool("RunRight", true);
-        //}
-        //else
-        //{
-        //    m_animator.SetBool("RunRight", false);
-        //}
-
-        //if (localVel.x < -0.25f)
-        //{
-        //    m_animator.SetBool("RunLeft", true);
-        //}
-        //else
-        //{
-        //    m_animator.SetBool("RunLeft", false);
-        //}
-
-
         //Movement Animations
-        m_animator.SetFloat("Speed", moveVector.magnitude);
+        if (containsCube)
+        {
+            m_animator.SetBool("HoldingCube", true);
+        }
 
         // Combat
         forward = transform.TransformDirection(Vector3.forward);
@@ -187,6 +159,8 @@ public class PlayerController : MonoBehaviour
         // Ranged or melee depending on ID
         if (containsCube == false)
         {
+            m_animator.SetBool("HoldingCube", false);
+
             if (attacking && rangedPlayer)
                 shoot();
             else if (attacking && meleePlayer)
@@ -199,37 +173,45 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         GetInput();
+
         ProcessInput();
+    }
+
+    // -- Animation Event Functions
+    public void Arrow()
+    {
+        Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation).GetComponent<TranslateProjectile>().SetDamage(rangedDamage, playerId);
+    }
+
+    public void Slash()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(center, forward, out hit, meleeRange, enemyMask))
+        {
+            target = hit.transform.gameObject;
+            target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
+        }
+        Debug.DrawRay(center, forward * meleeRange, Color.red);
+        Debug.Log("Slash!");
     }
 
     // Shoots forward out of spawn every 'fireRate' amount of seconds
     void shoot()
     {
-        shootTimer -= Time.deltaTime;
-        if (shootTimer <= 0)
+        if (m_canAttack)
         {
-            shootTimer = fireRate;
-            // Creates the projectile and assigns the damage it will do based on the players ranged damage
-            Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation).GetComponent<TranslateProjectile>().SetDamage(rangedDamage, playerId);
+            m_canAttack = false;
+            m_animator.SetTrigger("Attack");
         }
     }
 
     // Attack directly in front
     void melee()
     {
-        meleeTimer -= Time.deltaTime;
-        if (meleeTimer <= 0)
+        if (m_canAttack)
         {
-            meleeTimer = meleeAttackRate;
-
-            //Raycast to see if hit anything
-            RaycastHit hit;
-            if (Physics.Raycast(center, forward, out hit, meleeRange, enemyMask))
-            {
-                target = hit.transform.gameObject;
-                target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
-            }
-            Debug.DrawRay(center, forward * meleeRange, Color.red);
+            m_canAttack = false;
+            m_animator.SetTrigger("Attack");
         }
     }
 
@@ -240,9 +222,9 @@ public class PlayerController : MonoBehaviour
         if (hasAttackBuff == false)
         {
             if (meleePlayer)
-                 meleeAttackRate -= inc;
+                m_animator.SetFloat("AttackSpeed", inc);
             else if (rangedPlayer)
-                fireRate -= inc;
+                m_animator.SetFloat("AttackSpeed", inc);
             GameManager.reference.StartWave();
         }
     }

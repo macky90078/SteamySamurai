@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: d89e82d6198a8ab4dbddc26d46f4fe85
-timeCreated: 1521667379
+guid: 726426433fbe6f4478b17f39bff92452
+timeCreated: 1522706225
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -163,7 +163,7 @@ ModelImporter:
     400152: Spine1
     400154: Spine2
     400156: Spine3
-    7400000: CubeWalk
+    7400000: CubeWalkLeft
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -190,10 +190,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: CubeWalk
+      name: CubeWalkLeft
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 26
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

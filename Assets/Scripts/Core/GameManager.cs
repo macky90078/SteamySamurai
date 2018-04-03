@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
     {
         reference = gameObject.GetComponent<GameManager>();
         InitVars();
-        ChangeState(gameState.mainMenu);
+        //ChangeState(gameState.mainMenu);
     }
 
     void InitVars()
