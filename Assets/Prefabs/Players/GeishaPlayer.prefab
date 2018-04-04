@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 114492814212463224}
   - component: {fileID: 114975521030689790}
   - component: {fileID: 54748146435838270}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GeishaPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -6418,6 +6418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   playerId: 1
+  eulerAngle: {x: 0, y: 0, z: 0, w: 0}
   isLookInverted: 0
   cam: {fileID: 0}
   moveSpeed: 10
@@ -6428,12 +6429,16 @@ MonoBehaviour:
   meleePlayer: 0
   rangedPlayer: 1
   projectile: {fileID: 1894621904919306, guid: 05663a1beca23ac49b6c8fc154bdf296, type: 2}
-  projectileSpawn: {fileID: 1724456754016440}
+  projectileSpawn: {fileID: 1771399087446362}
   fireRate: 0.2
   rangedDamage: 1
   meleeAttackRate: 0.2
   meleeRange: 5
   meleeDamage: 1
+  m_localVel: {x: 0, y: 0, z: 0}
+  m_attackAnimationStart: 0
+  m_geishaAttackAnimationEnd: 0
+  m_canAttack: 1
   test1: {x: 0, y: 0, z: 0}
   test2: {x: 0, y: 0, z: 0}
   isbackped: 0
