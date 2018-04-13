@@ -5,10 +5,10 @@ using UnityEngine;
 public class SeekEnemy : MonoBehaviour {
 
     // Public variables
-    // none
+    public bool beenHit = false;
 
     // Private Variables
-        [SerializeField] private bool isNinja;
+    [SerializeField] private bool isNinja;
     [Tooltip("Percent of distance from target to start slowing")]
         [SerializeField] private float slowDistPerc = 0.16f; // Percentage of distance away from target location to toggle slow down.
     [Tooltip("Distance to stop from target")]
@@ -69,7 +69,6 @@ public class SeekEnemy : MonoBehaviour {
     private float currVelocityMax;
     private bool inCombo;
     private float comboTimer;
-
     private float centerHeight = 0.7f;
 
     // -- Attack Stuff

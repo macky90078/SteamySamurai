@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45029557, g: 0.50031763, b: 0.57532734, a: 1}
+  m_IndirectSpecularColor: {r: 0.45029587, g: 0.50031805, b: 0.57532775, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -6050,13 +6050,35 @@ Prefab:
       propertyPath: m_Name
       value: SamuraiPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 1190419347030664, guid: f11a21ccd9a50c741991db75fd165e0e, type: 2}
-      propertyPath: m_TagString
-      value: Player
+    - target: {fileID: 65832800278907370, guid: f11a21ccd9a50c741991db75fd165e0e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65832800278907370, guid: f11a21ccd9a50c741991db75fd165e0e,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f11a21ccd9a50c741991db75fd165e0e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &401504264 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1005451178357696, guid: f11a21ccd9a50c741991db75fd165e0e,
+    type: 2}
+  m_PrefabInternal: {fileID: 401504263}
+--- !u!114 &401504265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 401504264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5515dd070fc41614c8ce1855da9137cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &404173406
 Prefab:
   m_ObjectHideFlags: 0

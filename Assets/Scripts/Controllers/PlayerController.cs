@@ -66,12 +66,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rangedDamage = 1.0f;
     private float shootTimer = 0.0f;
     // Melee
+    [SerializeField] private BoxCollider meleeCollider;
     [SerializeField] private float meleeAttackRate = 0.5f;
     [SerializeField] private float meleeRange = 3.0f;
-    [SerializeField] private float meleeDamage = 1.0f;
+    public float meleeDamage = 1.0f;
     private float meleeTimer = 0.0f;
     private Vector3 center;
     private float centerHeight = 0.7f;
+    public List<NavMeshEnemy> hitEnemies;
 
     //Animations
     [HideInInspector] public Vector3 m_localVel;
@@ -189,7 +191,6 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(center, forward, out hit, meleeRange, enemyMask))
         {
             target = hit.transform.gameObject;
-            //target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
             target.GetComponent<NavMeshEnemy>().DealDamage(meleeDamage, playerId, false);
         }
         Debug.DrawRay(center, forward * meleeRange, Color.red);
@@ -243,6 +244,23 @@ public class PlayerController : MonoBehaviour
     {
         health = maxHealth;
         GameManager.reference.StartWave();
+    }
+
+    void ActivateCollider()
+    {
+        Debug.Log("Activated Collider");
+        meleeCollider.enabled = true;
+    }
+
+    void DeactivateCollider()
+    {
+        Debug.Log("Deactivated Collider");
+        meleeCollider.enabled = false;
+        foreach (NavMeshEnemy enemy in hitEnemies)
+        {
+            enemy.beenHit = false;
+        }
+        hitEnemies.Clear();
     }
 
     public void Die()

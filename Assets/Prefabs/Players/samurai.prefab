@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 33145759218892514}
   - component: {fileID: 23712497459229922}
   - component: {fileID: 95344790093983158}
+  - component: {fileID: 65832800278907370}
   m_Layer: 0
   m_Name: emp_sword_low
   m_TagString: Untagged
@@ -285,7 +286,7 @@ GameObject:
   - component: {fileID: 54425438129838850}
   m_Layer: 12
   m_Name: samurai
-  m_TagString: Player2
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2524,6 +2525,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 2, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &65832800278907370
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1005451178357696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.19083913, y: 1.2518164, z: 0.077212095}
+  m_Center: {x: -0.05059828, y: 0.96442264, z: 0.00000027931816}
 --- !u!95 &95344790093983158
 Animator:
   serializedVersion: 3
@@ -2621,9 +2634,11 @@ MonoBehaviour:
   projectileSpawn: {fileID: 0}
   fireRate: 0.3
   rangedDamage: 1
+  meleeCollider: {fileID: 65832800278907370}
   meleeAttackRate: 0.5
   meleeRange: 3
   meleeDamage: 1
+  hitEnemies: []
   m_localVel: {x: 0, y: 0, z: 0}
   m_attackAnimationStart: 0
   m_geishaAttackAnimationEnd: 0

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class NavMeshEnemy : MonoBehaviour {
 
     // Public variables
-    // none
+    public bool beenHit = false;
 
     // Private Variables
     [SerializeField] private bool isNinja;
