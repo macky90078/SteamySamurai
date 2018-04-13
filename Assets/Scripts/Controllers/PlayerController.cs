@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Rewired;
 public class PlayerController : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     //private bool select;
     private bool attacking;
     [SerializeField] private GameObject cam;
+    [SerializeField] private Slider healthBar;
     //private float maxTilt = 45f;
     //private float minTilt = 45f; //to stop player from looking up in circles
 
@@ -86,6 +88,9 @@ public class PlayerController : MonoBehaviour
     public Vector3 test1;
     public Vector3 test2;
     public bool isbackped = false;
+
+    private float xAxis;
+    private float zAxis;
 
     void Awake()
     {
@@ -264,6 +269,7 @@ public class PlayerController : MonoBehaviour
 
     void CheckHealth()
     {
+        healthBar.value = health / maxHealth;
         if(health <= 0)
         {
             Die();

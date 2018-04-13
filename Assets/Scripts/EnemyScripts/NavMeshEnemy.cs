@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class NavMeshEnemy : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class NavMeshEnemy : MonoBehaviour {
     [SerializeField] private BoxCollider meleeOneBox;
     [SerializeField] private BoxCollider meleeTwoBox;
     [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private Slider healthBar;
     [SerializeField] private states initialState;
     public float damage;
     private bool dead = false;
@@ -196,6 +198,7 @@ public class NavMeshEnemy : MonoBehaviour {
     // Switches to defense mode if health is less than OR equal to half of max health
     void CheckHealth()
     {
+        healthBar.value = health / maxHealth;
         if (health <= 0)
             Die();
         else if (health <= maxHealth / 2)
