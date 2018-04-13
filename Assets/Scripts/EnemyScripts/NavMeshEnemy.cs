@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Rewired;
 
 public class NavMeshEnemy : MonoBehaviour {
 
@@ -220,6 +221,7 @@ public class NavMeshEnemy : MonoBehaviour {
     // A player source
     public void DealDamage(float damage, int playerID)
     {
+        ReInput.players.GetPlayer(playerID).SetVibration(0, 0.75f, 0.1f);
         health -= damage;
         if (health < 0)
             health = 0;
@@ -236,6 +238,7 @@ public class NavMeshEnemy : MonoBehaviour {
 
     public void DealDamage(float damage, int playerID, bool ranged)
     {
+        ReInput.players.GetPlayer(playerID).SetVibration(0, 0.75f, 0.1f);
         health -= damage;
         if (health < 0)
             health = 0;

@@ -31,6 +31,7 @@ public class BuffSelection : MonoBehaviour {
 
     public void attackBuff()
     {
+        GameManager.reference.ButtonVibrate();
         if(GameManager.reference.scrapMetal >= attackBuffCost && GameManager.reference.hasAttackBuff == false)
         {
             Destroy(GameObject.FindGameObjectWithTag("AttackBuffButton"));
@@ -45,6 +46,7 @@ public class BuffSelection : MonoBehaviour {
 
     public void healthBuff()
     {
+        GameManager.reference.ButtonVibrate();
         if (GameManager.reference.scrapMetal >= healthBuffCost)
         {
             playerOne.buffHealth();
@@ -57,6 +59,7 @@ public class BuffSelection : MonoBehaviour {
 
     public void moveBuff()
     {
+        GameManager.reference.ButtonVibrate();
         if (GameManager.reference.scrapMetal >= moveBuffCost && GameManager.reference.hasMoveBuff == false)
         {
             Destroy(GameObject.FindGameObjectWithTag("MovementBuffButton"));

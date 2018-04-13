@@ -22,12 +22,14 @@ public class MenuButtons : MonoBehaviour {
 
     public void loadScene()
     {
+        GameManager.reference.ButtonVibrate();
         GameManager.NextScene = sceneName;
         SceneManager.LoadScene("LoadingScreen");
     }
 
     public void StartGame()
     {
+        GameManager.reference.ButtonVibrate();
         GameManager.NextScene = sceneName;
         SceneManager.LoadScene("LoadingScreen");
         GameManager.reference.StartWave();
@@ -35,6 +37,7 @@ public class MenuButtons : MonoBehaviour {
 
     public void ResumeGame()
     {
+        GameManager.reference.ButtonVibrate();
         GameManager.reference.ChangeState(GameManager.gameState.playing);
         Time.timeScale = 1;
         pauseCanvas.gameObject.SetActive(false);
@@ -42,6 +45,7 @@ public class MenuButtons : MonoBehaviour {
 
     public void QuitGame()
     {
+        GameManager.reference.ButtonVibrate();
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

@@ -199,4 +199,11 @@ public class GameManager : MonoBehaviour {
     {
         SceneManager.LoadScene("loadingScreen");
     }
+
+    //UI stuff
+    public void ButtonVibrate()
+    {
+        ReInput.players.GetPlayer(0).SetVibration(0, 0.3f, 0.17f);
+        ReInput.players.GetPlayer(1).SetVibration(0, 0.3f, 0.17f);
+    }
 }
