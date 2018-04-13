@@ -230,13 +230,15 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1255202873994830
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4045193709568474}
   - component: {fileID: 95433507511197720}
+  - component: {fileID: 114593130402095510}
+  - component: {fileID: 65860190107283958}
   m_Layer: 0
   m_Name: ENEMY SWORD FIXED
   m_TagString: Untagged
@@ -1289,16 +1291,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1255202873994830}
-  m_LocalRotation: {x: -0.00023645937, y: 0.00035180294, z: -0.51005787, w: 0.86014}
-  m_LocalPosition: {x: 0.41966462, y: 0.7819648, z: 0.641}
+  m_LocalRotation: {x: -0.86013794, y: -0.5100567, z: 0.0019124044, w: 0.0011061637}
+  m_LocalPosition: {x: 0.024971265, y: 0.095027834, z: -0.6432006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4202675402821062}
   - {fileID: 4786292550441776}
   - {fileID: 4454457757387436}
   - {fileID: 4057758463314614}
-  m_Father: {fileID: 4583446385605288}
-  m_RootOrder: 2
+  m_Father: {fileID: 4072764185509648}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -0.003, y: 0.048, z: -61.335003}
 --- !u!4 &4057758463314614
 Transform:
@@ -1371,6 +1373,7 @@ Transform:
   - {fileID: 4666839640302380}
   - {fileID: 4188326184563762}
   - {fileID: 4841581740395840}
+  - {fileID: 4045193709568474}
   m_Father: {fileID: 4945201758179562}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1538,7 +1541,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4583446385605288}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4202675402821062
 Transform:
@@ -1891,12 +1894,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096700429787646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6008043, y: 0.1, z: -0.9931457}
+  m_LocalPosition: {x: -10.059374, y: 0.1, z: -0.6013921}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4405299679857862}
   - {fileID: 4262631173034394}
-  - {fileID: 4045193709568474}
   - {fileID: 4202259104294852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2558,6 +2560,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.7136996, z: 0.61}
   m_Center: {x: 0, y: 0.8965646, z: 0.07}
+--- !u!65 &65860190107283958
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1255202873994830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.18540972, y: 0.072871014, z: 1.4880254}
+  m_Center: {x: -0.034068946, y: -0.0055643185, z: 0.2936865}
 --- !u!95 &95433507511197720
 Animator:
   serializedVersion: 3
@@ -2641,14 +2655,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beenHit: 0
   isNinja: 0
+  meleeOneBox: {fileID: 65860190107283958}
+  meleeTwoBox: {fileID: 0}
   maxHealth: 5
   initialState: 0
+  damage: 2
   scrapMetalPrefab: {fileID: 1028190345729578, guid: 4df0a3c0c7478854eb05fd4db6392c8c,
     type: 2}
   meleeRange: 3
   m_canAttack: 1
   comboTimeLimit: 3
-  stopDist: 4
+  stopDist: 3
   chargeAngle: 45
   acceleration: 8
   maxSpeed: 3.5
@@ -2657,6 +2674,18 @@ MonoBehaviour:
   chargeAccel: 16
   chargeMaxSpeed: 7
   chargeAngularSpeed: 240
+--- !u!114 &114593130402095510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1255202873994830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a1a10f315543f43bd7c7cca2445ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1096700429787646}
 --- !u!137 &137278587796380582
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2787,7 +2816,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 4
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

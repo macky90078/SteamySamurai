@@ -79,6 +79,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4389286370495666}
+  - component: {fileID: 65629768916066970}
+  - component: {fileID: 114669582096185030}
   m_Layer: 0
   m_Name: Left_Wrist
   m_TagString: Untagged
@@ -215,6 +217,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4975160635993982}
+  - component: {fileID: 65233572012759894}
+  - component: {fileID: 114960274597530608}
   m_Layer: 0
   m_Name: Right_Wrist
   m_TagString: Untagged
@@ -543,7 +547,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1880499952477314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5529385, y: 0.09999997, z: 4.7366467}
+  m_LocalPosition: {x: 5.2793827, y: 0.1, z: -1.2664973}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4438725791363744}
@@ -857,6 +861,18 @@ Transform:
   m_Father: {fileID: 4787868891518222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &65233572012759894
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494951978978840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.88733053, y: 0.7485787, z: 0.11367261}
+  m_Center: {x: 0.5086468, y: 0.34208894, z: -0.027609056}
 --- !u!65 &65416018138835570
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -869,6 +885,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.0360165, z: 1.5}
   m_Center: {x: 0, y: 1.1131718, z: 0.4}
+--- !u!65 &65629768916066970
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211270698719754}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.90395045, y: 0.5333603, z: 0.12238136}
+  m_Center: {x: -0.5045682, y: -0.2233792, z: 0.027537856}
 --- !u!95 &95967873570744514
 Animator:
   serializedVersion: 3
@@ -933,14 +961,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cbc5084c626664d9eb310bbebcac84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beenHit: 0
   isNinja: 1
+  meleeOneBox: {fileID: 65629768916066970}
+  meleeTwoBox: {fileID: 65233572012759894}
   maxHealth: 5
   initialState: 0
+  damage: 2
   scrapMetalPrefab: {fileID: 1028190345729578, guid: 4df0a3c0c7478854eb05fd4db6392c8c,
     type: 2}
   meleeRange: 3
   m_canAttack: 1
   comboTimeLimit: 3
+  stopDist: 4
   chargeAngle: 45
   acceleration: 8
   maxSpeed: 3.5
@@ -949,6 +982,30 @@ MonoBehaviour:
   chargeAccel: 16
   chargeMaxSpeed: 7
   chargeAngularSpeed: 240
+--- !u!114 &114669582096185030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211270698719754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a1a10f315543f43bd7c7cca2445ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1880499952477314}
+--- !u!114 &114960274597530608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1494951978978840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a1a10f315543f43bd7c7cca2445ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1880499952477314}
 --- !u!137 &137470370338898474
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

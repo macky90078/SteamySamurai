@@ -415,10 +415,19 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.7964775
-        functionName: AttackPlayer
+      - time: 0.7004219
+        functionName: ActivateCollider
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 1096700429787646, guid: 9aff80f0a17e7d447a3ecde4f45bb60b,
+          type: 2}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.97717404
+        functionName: DeactivateCollider
+        data: 
+        objectReferenceParameter: {fileID: 1096700429787646, guid: 9aff80f0a17e7d447a3ecde4f45bb60b,
+          type: 2}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

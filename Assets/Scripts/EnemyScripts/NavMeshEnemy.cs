@@ -10,8 +10,11 @@ public class NavMeshEnemy : MonoBehaviour {
 
     // Private Variables
     [SerializeField] private bool isNinja;
+    [SerializeField] private BoxCollider meleeOneBox;
+    [SerializeField] private BoxCollider meleeTwoBox;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private states initialState;
+    public float damage;
     private bool dead = false;
     private float health;
     private float p1Dmg; // Amount of damage done from each player
@@ -146,15 +149,15 @@ public class NavMeshEnemy : MonoBehaviour {
 
     public void AttackPlayer()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(center, forward, out hit, meleeRange, 12))
-        {
-            target = hit.transform.gameObject;
-            //target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
-            Debug.Log(target);
-        }
-        Debug.DrawRay(center, forward * meleeRange, Color.red);
-        //Debug.Log("Slash!");
+        //RaycastHit hit;
+        //if (Physics.Raycast(center, forward, out hit, meleeRange, 12))
+        //{
+        //    target = hit.transform.gameObject;
+        //    //target.GetComponent<SeekEnemy>().DealDamage(meleeDamage, playerId, false);
+        //    Debug.Log(target);
+        //}
+        //Debug.DrawRay(center, forward * meleeRange, Color.red);
+        Debug.Log("Slash!");
     }
 
     //Checks if target is within a cone in front of self
@@ -175,6 +178,8 @@ public class NavMeshEnemy : MonoBehaviour {
     {
         if (distTo <= chargeDistance)
             charging = true;
+        else if (agent.isStopped)
+            charging = false;
         else
             charging = false;
 
@@ -268,6 +273,20 @@ public class NavMeshEnemy : MonoBehaviour {
             m_animator.SetBool("CoreOut", false);
             inCombo = false;
         }
+    }
+
+    void ActivateCollider()
+    {
+        meleeOneBox.enabled = true;
+        if (isNinja)
+            meleeTwoBox.enabled = false;
+    }
+
+    void DeactivateCollider()
+    {
+        meleeOneBox.enabled = false;
+        if (isNinja)
+            meleeTwoBox.enabled = false;
     }
 
     void Die()

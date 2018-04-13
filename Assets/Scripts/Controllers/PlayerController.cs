@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         enemyMask = GameManager.enemyMask;
         centerHeight = GetComponent<BoxCollider>().center.y;// Finds the center of the attached box collider, used for raycasting from center of player
         gameManager = GameManager.reference;
+        health = maxHealth;
     }
 
     void GetInput()
@@ -174,8 +175,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckHealth();
         GetInput();
-
         ProcessInput();
     }
 
@@ -248,19 +249,31 @@ public class PlayerController : MonoBehaviour
 
     void ActivateCollider()
     {
-        Debug.Log("Activated Collider");
         meleeCollider.enabled = true;
     }
 
     void DeactivateCollider()
     {
-        Debug.Log("Deactivated Collider");
         meleeCollider.enabled = false;
         foreach (NavMeshEnemy enemy in hitEnemies)
         {
             enemy.beenHit = false;
         }
         hitEnemies.Clear();
+    }
+
+    void CheckHealth()
+    {
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void DealDamage(float dmg)
+    {
+        health -= dmg;
+        Debug.Log(health);
     }
 
     public void Die()

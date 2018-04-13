@@ -19,10 +19,8 @@ public class SwordScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Colliding");
         if (other.gameObject.tag == "enemy")
         {
-            Debug.Log("Hit Enemy");
             enemy = other.gameObject.GetComponent<NavMeshEnemy>();
             if (enemy.beenHit == false)
             {

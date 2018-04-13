@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 54748146435838270}
   m_Layer: 12
   m_Name: GeishaPlayer
-  m_TagString: Player
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6423,7 +6423,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   moveSpeed: 10
   m_damping: 10
-  maxHealth: 20
+  maxHealth: 500
   hasMoveBuff: 0
   hasAttackBuff: 0
   meleePlayer: 0
@@ -6432,9 +6432,11 @@ MonoBehaviour:
   projectileSpawn: {fileID: 1771399087446362}
   fireRate: 0.2
   rangedDamage: 1
+  meleeCollider: {fileID: 0}
   meleeAttackRate: 0.2
   meleeRange: 5
   meleeDamage: 1
+  hitEnemies: []
   m_localVel: {x: 0, y: 0, z: 0}
   m_attackAnimationStart: 0
   m_geishaAttackAnimationEnd: 0
