@@ -63,6 +63,14 @@ public class NavMeshEnemy : MonoBehaviour {
     [SerializeField] private float chargeMaxSpeed = 7.0f;
     [SerializeField] private float chargeAngularSpeed = 240.0f;
 
+    // Used for blinking when damaged
+    [SerializeField] private int dmgBlinkCount = 3;
+    [SerializeField] private Renderer[] meshes;
+    [SerializeField] private float blinkSpeed = 0.1f;
+    private float blinkTimer;
+    private int currBlinkCount;
+    private bool shouldBlink = false;
+
     private void Awake()
     {
         m_animator = gameObject.GetComponent<Animator>();
@@ -77,6 +85,7 @@ public class NavMeshEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        DamageBlink();
         CheckHealth();
         CheckCombo();
         CheckDistance();
@@ -213,6 +222,8 @@ public class NavMeshEnemy : MonoBehaviour {
     public void DealDamage(float damage)
     {
         health -= damage;
+        shouldBlink = true;
+        currBlinkCount = dmgBlinkCount * 2;
         if (health < 0)
             health = 0;
     }
@@ -221,6 +232,8 @@ public class NavMeshEnemy : MonoBehaviour {
     // A player source
     public void DealDamage(float damage, int playerID)
     {
+        shouldBlink = true;
+        currBlinkCount = dmgBlinkCount * 2;
         ReInput.players.GetPlayer(playerID).SetVibration(0, 0.75f, 0.1f);
         health -= damage;
         if (health < 0)
@@ -238,6 +251,8 @@ public class NavMeshEnemy : MonoBehaviour {
 
     public void DealDamage(float damage, int playerID, bool ranged)
     {
+        shouldBlink = true;
+        currBlinkCount = dmgBlinkCount * 2;
         ReInput.players.GetPlayer(playerID).SetVibration(0, 0.75f, 0.1f);
         health -= damage;
         if (health < 0)
@@ -258,6 +273,28 @@ public class NavMeshEnemy : MonoBehaviour {
         if (ranged && inCombo)
         {
             Die();
+        }
+    }
+
+    void DamageBlink()
+    {
+        blinkTimer -= Time.deltaTime;
+        if (blinkTimer <= 0)
+        {
+            blinkTimer = blinkSpeed;
+            if (shouldBlink == true)
+            {
+                currBlinkCount -= 1;
+                foreach (Renderer x in meshes)
+                    x.enabled = !x.enabled;
+            }
+        }
+        if (currBlinkCount <= 0)
+        {
+            shouldBlink = false;
+            foreach (Renderer x in meshes)
+                x.enabled = true;
+            currBlinkCount = dmgBlinkCount * 2;
         }
     }
 

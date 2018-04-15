@@ -1978,7 +1978,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096700429787646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3554926, y: 0.09999953, z: 6.637383}
+  m_LocalPosition: {x: 11.859819, y: 0.1, z: -1.8975974}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4405299679857862}
@@ -2760,6 +2760,14 @@ MonoBehaviour:
   chargeAccel: 16
   chargeMaxSpeed: 7
   chargeAngularSpeed: 240
+  dmgBlinkCount: 3
+  meshes:
+  - {fileID: 137278587796380582}
+  - {fileID: 23340679997366404}
+  - {fileID: 23349965805408900}
+  - {fileID: 23321507147991426}
+  - {fileID: 23955922958545698}
+  blinkSpeed: 0.1
 --- !u!114 &114086993881244314
 MonoBehaviour:
   m_ObjectHideFlags: 1

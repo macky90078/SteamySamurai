@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 test2;
     public bool isbackped = false;
 
+    // Used for damage blink
     [SerializeField] private int dmgBlinkCount = 3;
     [SerializeField] private Renderer[] meshes;
     [SerializeField] private float blinkSpeed = 0.1f;
