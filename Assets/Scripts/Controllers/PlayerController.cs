@@ -100,10 +100,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // Ensures player cant be both melee and ranged
-        if (meleePlayer && rangedPlayer)
-            meleePlayer = false;
+        InitChecks();
+        InitVars();
+    }
 
+    // Some initial variable assignments
+    void InitVars()
+    {
         shootTimer = fireRate;
         enemyMask = GameManager.enemyMask;
         centerHeight = GetComponent<BoxCollider>().center.y;// Finds the center of the attached box collider, used for raycasting from center of player
@@ -111,6 +114,17 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
     }
 
+    // Ensuring everything is in order when starting
+    void InitChecks()
+    {
+        // Ensures player cant be both melee and ranged
+        if (meleePlayer && rangedPlayer)
+            meleePlayer = false;
+        // Ensures sword collider doesnt start enabled
+        if (meleeCollider.enabled == true)
+            meleeCollider.enabled = false;
+    }
+    
     void GetInput()
     {
         moveVector.x = player.GetAxis("MoveHorizontal"); //the left stick on a controller, or WASD
@@ -191,6 +205,7 @@ public class PlayerController : MonoBehaviour
         Instantiate(projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation).GetComponent<TranslateProjectile>().SetDamage(rangedDamage, playerId);
     }
 
+    // A raycast attack from approximate center of player, box collider center is used to find this
     public void Slash()
     {
         RaycastHit hit;
@@ -224,7 +239,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Buff functions
-
+    // Buffs attack speed by 'inc'
     public void buffAttack(float inc)
     {
         if (hasAttackBuff == false)
@@ -236,7 +251,7 @@ public class PlayerController : MonoBehaviour
             GameManager.reference.StartWave();
         }
     }
-
+    // Buffs movement speed by 'inc'
     public void buffSpeed(float inc)
     {
         if (hasMoveBuff == false)
@@ -245,18 +260,20 @@ public class PlayerController : MonoBehaviour
             GameManager.reference.StartWave();
         }
     }
-
+    // Sets health to max health
     public void buffHealth()
     {
         health = maxHealth;
         GameManager.reference.StartWave();
     }
 
+    // Activates collider on sword
     void ActivateCollider()
     {
         meleeCollider.enabled = true;
     }
 
+    // Deactivates collider on sword
     void DeactivateCollider()
     {
         meleeCollider.enabled = false;
@@ -267,6 +284,7 @@ public class PlayerController : MonoBehaviour
         hitEnemies.Clear();
     }
 
+    // Kills player if health is 0 and updates health bar user interface
     void CheckHealth()
     {
         healthBar.value = health / maxHealth;
@@ -276,12 +294,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Used for dealing damage to player
     public void DealDamage(float dmg)
     {
         health -= dmg;
         Debug.Log(health);
     }
 
+    // Death
     public void Die()
     {
         GameManager.reference.ChangeState(GameManager.gameState.gameOver);
