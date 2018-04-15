@@ -97,6 +97,11 @@ public class PlayerController : MonoBehaviour
     private int currBlinkCount;
     private bool shouldBlink = false;
 
+    private float prevLookX;
+    private float prevLookY;
+    private float prevMoveX;
+    private float prevMoveZ;
+
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerId);
@@ -145,34 +150,41 @@ public class PlayerController : MonoBehaviour
 
     void ProcessInput()
     {
-        Vector3 direction = new Vector3(moveVector.x, 0.0f, moveVector.z); //cam.transform.forward;
-        //direction.y = 0;
-
-        direction = cam.transform.TransformDirection(direction);
-        direction.y = 0;
-
-        lookVector = cam.transform.TransformDirection(lookVector);
-
-        if (m_canAttack)
+        if(moveVector.x == 0.0f && moveVector.z == 0.0f && lookVector.x == 0.0f && lookVector.y == 0.0f)
         {
-            transform.position += direction * moveSpeed * Time.deltaTime;
+            m_localVel = new Vector3(0.0f, 0.0f, 0.0f);
         }
-
-        m_localVel = transform.InverseTransformDirection(direction);
-
-        //transform.Translate(direction * Time.deltaTime * moveSpeed); //moving the player
-
-        if (lookVector.x != 0.0f || lookVector.y != 0.0f)
+        else
         {
-            m_LookAngleInDegrees = Mathf.Atan2(lookVector.x, lookVector.y) * Mathf.Rad2Deg;
-            eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
-        }
-        else if (lookVector.x <= 0.0f || lookVector.y <= 0.0f)
-        {
-            m_LookAngleInDegrees = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
+            Vector3 direction = new Vector3(moveVector.x, 0.0f, moveVector.z); //cam.transform.forward;
+                                                                               //direction.y = 0;
+
+            direction = cam.transform.TransformDirection(direction);
+            direction.y = 0;
+
+            lookVector = cam.transform.TransformDirection(lookVector);
+
+            if (m_canAttack)
+            {
+                transform.position += direction * moveSpeed * Time.deltaTime;
+            }
+
+            m_localVel = transform.InverseTransformDirection(direction);
+
+            //transform.Translate(direction * Time.deltaTime * moveSpeed); //moving the player
+
+            if (lookVector.x != 0.0f || lookVector.y != 0.0f)
+            {
+                m_LookAngleInDegrees = Mathf.Atan2(lookVector.x, lookVector.y) * Mathf.Rad2Deg;
+                eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
+            }
+            else if (lookVector.x <= 0.0f || lookVector.y <= 0.0f)
+            {
+                m_LookAngleInDegrees = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                eulerAngle = Quaternion.Euler(0.0f, m_LookAngleInDegrees, 0.0f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, eulerAngle, Time.deltaTime * m_damping);
+            }
         }
 
         //Movement Animations
