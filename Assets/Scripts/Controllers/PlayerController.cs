@@ -89,8 +89,12 @@ public class PlayerController : MonoBehaviour
     public Vector3 test2;
     public bool isbackped = false;
 
-    private float xAxis;
-    private float zAxis;
+    [SerializeField] private int dmgBlinkCount = 3;
+    [SerializeField] private Renderer[] meshes;
+    [SerializeField] private float blinkSpeed = 0.1f;
+    private float blinkTimer;
+    private int currBlinkCount;
+    private bool shouldBlink = false;
 
     void Awake()
     {
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour
     // Some initial variable assignments
     void InitVars()
     {
+        blinkTimer = blinkSpeed;
         shootTimer = fireRate;
         enemyMask = GameManager.enemyMask;
         centerHeight = GetComponent<BoxCollider>().center.y;// Finds the center of the attached box collider, used for raycasting from center of player
@@ -121,7 +126,7 @@ public class PlayerController : MonoBehaviour
         if (meleePlayer && rangedPlayer)
             meleePlayer = false;
         // Ensures sword collider doesnt start enabled
-        if (meleeCollider.enabled == true)
+        if (meleeCollider != null && meleeCollider.enabled == true)
             meleeCollider.enabled = false;
     }
     
@@ -197,6 +202,7 @@ public class PlayerController : MonoBehaviour
         CheckHealth();
         GetInput();
         ProcessInput();
+        DamageBlink();
     }
 
     // -- Animation Event Functions
@@ -298,7 +304,31 @@ public class PlayerController : MonoBehaviour
     public void DealDamage(float dmg)
     {
         health -= dmg;
+        shouldBlink = true;
+        currBlinkCount = dmgBlinkCount*2;
         Debug.Log(health);
+    }
+
+    void DamageBlink()
+    {
+        blinkTimer -= Time.deltaTime;
+        if(blinkTimer <= 0)
+        {
+            blinkTimer = blinkSpeed;
+            if (shouldBlink == true)
+            {
+                currBlinkCount -= 1;
+                foreach (Renderer x in meshes)
+                    x.enabled = !x.enabled;
+            }
+        }
+        if(currBlinkCount <= 0)
+        {
+            shouldBlink = false;
+            foreach (Renderer x in meshes)
+                x.enabled = true;
+            currBlinkCount = dmgBlinkCount * 2;
+        }
     }
 
     // Death
