@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 95157214967370082}
   - component: {fileID: 114426140504643562}
   - component: {fileID: 108874355577142682}
+  - component: {fileID: 65639143714276576}
+  - component: {fileID: 54613347912699170}
   m_Layer: 0
   m_Name: ArrowPrefab
   m_TagString: Untagged
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894621904919306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.35221624, y: 3.09, z: 5.29}
   m_LocalScale: {x: 10, y: 10, z: 2.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,6 +85,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1894621904919306}
   m_Mesh: {fileID: 4300000, guid: 3cb04535d0b24b749a4af5bb983d31ac, type: 3}
+--- !u!54 &54613347912699170
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894621904919306}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &65639143714276576
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1894621904919306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.015916424, y: 0.03610691, z: 0.6560081}
+  m_Center: {x: -0.0004937269, y: 0.00028505363, z: -0.32564664}
 --- !u!95 &95157214967370082
 Animator:
   serializedVersion: 3

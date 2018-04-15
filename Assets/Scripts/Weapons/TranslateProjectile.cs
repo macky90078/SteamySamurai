@@ -24,7 +24,7 @@ public class TranslateProjectile : MonoBehaviour {
 	void Update () {
         forward = transform.TransformDirection(Vector3.forward);
         MoveProjectile();
-        CheckCollision();
+        //CheckCollision();
 	}
 
     void CheckCollision()
@@ -43,6 +43,16 @@ public class TranslateProjectile : MonoBehaviour {
         {
             target = hit.transform.gameObject;
             // Finds the script attached to the enemy, this is a design issue, made a note of it
+            target.GetComponent<NavMeshEnemy>().DealDamage(damage, sourcePlayerId, true);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "enemy")
+        {
+            target = other.transform.gameObject;
             target.GetComponent<NavMeshEnemy>().DealDamage(damage, sourcePlayerId, true);
             Destroy(gameObject);
         }
