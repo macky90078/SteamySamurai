@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1298,22 +1298,22 @@ Prefab:
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[0]
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[1]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: ninjasPerWave.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[2]
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
@@ -1323,7 +1323,7 @@ Prefab:
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: ninjasPerWave.Array.data[2]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
