@@ -11,9 +11,10 @@ public class DataCubeSwapper : MonoBehaviour
 
     //shouldSwap button
     private bool[] swapButton; //the player's 'y' button
-    private bool[] shouldSwap; //containing the bool for whether or not the player wants to swap the cube
+    public bool[] shouldSwap; //containing the bool for whether or not the player wants to swap the cube
 
     public GameObject[] playerPrefabs; //reference to both players
+    public GameObject[] m_playerYButtonObj;
     public GameObject dataCube;
     private GameObject dataCubeInstance;
 
@@ -69,6 +70,22 @@ public class DataCubeSwapper : MonoBehaviour
     {
 		GetInput();
         ProcessInput();
+        if(shouldSwap[0])
+        {
+            m_playerYButtonObj[0].SetActive(true);
+        }
+        else
+        {
+            m_playerYButtonObj[0].SetActive(false);
+        }
+        if (shouldSwap[1])
+        {
+            m_playerYButtonObj[1].SetActive(true);
+        }
+        else
+        {
+            m_playerYButtonObj[1].SetActive(false);
+        }
         if (shouldSwap[0] && shouldSwap[1])
         {
             for (int i = 0; i < numPlayers; i++)

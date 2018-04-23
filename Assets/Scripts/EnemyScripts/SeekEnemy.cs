@@ -54,6 +54,7 @@ public class SeekEnemy : MonoBehaviour {
     private GameObject m_gPlayer1;
     private GameObject m_gPlayer2;
     [SerializeField] private GameObject scrapMetalPrefab;
+    [SerializeField] private GameObject m_deadParticle;
     
     [Tooltip("Range that character should start charging")]
         [SerializeField] private float chargeDist = 15f;
@@ -355,6 +356,7 @@ public class SeekEnemy : MonoBehaviour {
     void Die()
     {
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
+        Instantiate(m_deadParticle, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

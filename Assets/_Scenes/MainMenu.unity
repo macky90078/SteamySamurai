@@ -1235,13 +1235,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
+      propertyPath: playerIds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
       propertyPath: ninjasPerWave.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4889304809411468, guid: f9d42311221aa3c41841fff1d63421e4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1303,7 +1308,7 @@ Prefab:
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[1]
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
@@ -1313,7 +1318,7 @@ Prefab:
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: samuraiPerWave.Array.data[2]
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
@@ -1328,6 +1333,41 @@ Prefab:
     - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
         type: 2}
       propertyPath: currWave
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: samuraiPerWave.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: samuraiPerWave.Array.data[4]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: ninjasPerWave.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: ninjasPerWave.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: currState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: playerIds.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441868736703046, guid: f9d42311221aa3c41841fff1d63421e4,
+        type: 2}
+      propertyPath: samSpawned
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

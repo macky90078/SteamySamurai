@@ -932,13 +932,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ccf01300ef40f45ab6d2b772b54d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beenHit: 0
   isNinja: 1
   slowDistPerc: 0.16
   stopDist: 2
   slowRotPerc: 0.25
-  velocityMax: 5
+  velocityMax: 7
   rotationMax: 135
-  accelLinearInc: 0.1
+  accelLinearInc: 0.2
   accelAngularInc: 1
   accelLinearMax: 2
   accelAngularMax: 180
@@ -946,10 +947,12 @@ MonoBehaviour:
   initialState: 0
   scrapMetalPrefab: {fileID: 1028190345729578, guid: 4df0a3c0c7478854eb05fd4db6392c8c,
     type: 2}
-  chargeDist: 15
-  chargeAccelMax: 5
+  chargeDist: 30
+  chargeAccelMax: 7
   chargeAccelInc: 0.5
-  maxChargeVelocity: 25
+  maxChargeVelocity: 30
+  meleeRange: 3
+  m_canAttack: 1
   comboTimeLimit: 3
 --- !u!137 &137426081938556162
 SkinnedMeshRenderer:

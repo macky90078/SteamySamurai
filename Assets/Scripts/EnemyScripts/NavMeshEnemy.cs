@@ -32,6 +32,8 @@ public class NavMeshEnemy : MonoBehaviour {
     private GameObject m_gPlayer1;
     private GameObject m_gPlayer2;
     [SerializeField] private GameObject scrapMetalPrefab;
+    [SerializeField] private GameObject m_exposedParticle;
+    [SerializeField] private GameObject m_deadParticle;
     private bool charging = false;
     private bool inCombo;
     private float comboTimer;
@@ -309,11 +311,13 @@ public class NavMeshEnemy : MonoBehaviour {
         if (inCombo)
         {
             m_animator.SetBool("CoreOut", true);
+            m_exposedParticle.SetActive(true);
             comboTimer -= Time.deltaTime;
         }
         if (inCombo && comboTimer <= 0)
         {
             m_animator.SetBool("CoreOut", false);
+            m_exposedParticle.SetActive(false);
             inCombo = false;
         }
     }
@@ -336,6 +340,7 @@ public class NavMeshEnemy : MonoBehaviour {
     {
         dead = true;
         Instantiate(scrapMetalPrefab, transform.position, transform.rotation);
+        Instantiate(m_deadParticle, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }
